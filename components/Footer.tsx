@@ -46,7 +46,9 @@ export default function Footer() {
             marginBottom: "28px",
           }}
         >
-          אמנות קיר מודולרית — תשעה סמלים, סיפור אחד
+          לוחות זיכרון מודולריים
+          <br />
+          תשעה סמלים · סיפור אחד
         </div>
 
         <div
@@ -63,6 +65,18 @@ export default function Footer() {
           <a href="/custom-composition" style={{ color: "inherit", textDecoration: "none", fontSize: "13px", letterSpacing: "0.02em", opacity: 0.85 }}>הרכבה אישית</a>
           <a href="/about" style={{ color: "inherit", textDecoration: "none", fontSize: "13px", letterSpacing: "0.02em", opacity: 0.85 }}>על המותג</a>
           <a href="/contact" style={{ color: "inherit", textDecoration: "none", fontSize: "13px", letterSpacing: "0.02em", opacity: 0.85 }}>יצירת קשר</a>
+        </div>
+
+        <div
+          style={{
+            marginTop: "24px",
+            fontSize: "12px",
+            color: "rgba(244,241,234,0.45)",
+            letterSpacing: "0.02em",
+            textAlign: "center",
+          }}
+        >
+          לוחות בעבודת יד · התאמה אישית לפי סיפור
         </div>
       </div>
     </footer>

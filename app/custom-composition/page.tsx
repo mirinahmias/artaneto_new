@@ -165,11 +165,13 @@ function BoardTile({
   isPlacingMode,
   onClick,
   onRemove,
+  onHoverLabelChange,
 }: {
   model: ModelItem | null;
   isPlacingMode: boolean;
   onClick: () => void;
   onRemove: () => void;
+  onHoverLabelChange: (label: string | null) => void;
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -182,8 +184,8 @@ function BoardTile({
     <div
       onClick={onClick}
       onContextMenu={handleContextMenu}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => { setHovered(true); onHoverLabelChange(model ? model.label : null); }}
+      onMouseLeave={() => { setHovered(false); onHoverLabelChange(null); }}
       style={{
         position: "relative",
         width: "100%",
@@ -237,7 +239,7 @@ function BoardTile({
                   borderRadius: "3px",
                 }}
               >
-                לחצי ימין להסרה
+                לחיצה ימנית להסרה
               </span>
             </div>
           )}
@@ -298,6 +300,8 @@ export default function CustomCompositionPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formServerError, setFormServerError] = useState("");
+
+  const [hoveredBoardLabel, setHoveredBoardLabel] = useState<string | null>(null);
 
   const selectedModel = selectedModelId ? allModelsById[selectedModelId] : null;
   const placedCount = grid.filter(Boolean).length;
@@ -494,12 +498,13 @@ export default function CustomCompositionPage() {
                   }}
                 />
                 <span>
+                  {"מצב: "}
                   <strong style={{ fontWeight: 700 }}>{selectedModel.label}</strong>
-                  {" — לחצי על תא בלוח"}
+                  {` — ${placedCount} סמלים נבחרו`}
                 </span>
               </>
             ) : (
-              <span style={{ opacity: 0.58 }}>בחרי סמל מהספרייה</span>
+              <span style={{ opacity: 0.58 }}>בחירת סמל להצבה על הלוח</span>
             )}
           </div>
 
@@ -544,7 +549,7 @@ export default function CustomCompositionPage() {
                     color: "#1c1410",
                   }}
                 >
-                  זה הלוח שלך.
+                  זה הלוח שלך
                 </p>
                 <p
                   style={{
@@ -556,7 +561,7 @@ export default function CustomCompositionPage() {
                     margin: "0 0 20px 0",
                   }}
                 >
-                  רוצה להתקדם? שלחי את הלוח ונחזור אלייך עם הצעת מחיר והתאמות אם צריך.
+                  רוצה להתקדם? ניתן להשאיר פרטים לקבלת הצעת מחיר והתאמה אישית.
                 </p>
                 <button
                   onClick={handleOpenSubmitForm}
@@ -584,7 +589,7 @@ export default function CustomCompositionPage() {
                     (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#c9a96e";
                   }}
                 >
-                  שלחי לקבלת הצעת מחיר
+                  שליחת בקשה
                 </button>
                 <p
                   style={{
@@ -691,7 +696,7 @@ export default function CustomCompositionPage() {
                 color: "#6b5a49",
               }}
             >
-              בחרי עד 9 סמלים מהספרייה ושבצי אותם על הלוח
+              בחירה של עד 9 סמלים ושיבוץ על גבי הלוח
             </p>
           </div>
 
@@ -714,7 +719,7 @@ export default function CustomCompositionPage() {
                 textTransform: "uppercase",
               }}
             >
-              לוח ההרכבה
+              לוח בהרכבה
             </span>
             <span style={{ width: "1px", height: "11px", backgroundColor: "rgba(0,0,0,0.14)", flexShrink: 0 }} />
             <span style={{ fontSize: "14px", color: "#a08060", fontWeight: 500 }}>
@@ -738,7 +743,7 @@ export default function CustomCompositionPage() {
                 transition: "opacity 0.15s ease",
               }}
             >
-              נקה לוח
+              ניקוי לוח
             </button>
           </div>
 
@@ -783,13 +788,14 @@ export default function CustomCompositionPage() {
                     isPlacingMode={isPlacingMode}
                     onClick={() => handleCellClick(i)}
                     onRemove={() => handleCellRemove(i)}
+                    onHoverLabelChange={setHoveredBoardLabel}
                   />
                 ))}
               </div>
             </div>
 
             {/* Caption */}
-            {(isPlacingMode || placedCount > 0) && (
+            {(hoveredBoardLabel !== null || isPlacingMode || placedCount > 0) && (
               <p
                 style={{
                   margin: "7px 0 0",
@@ -800,11 +806,26 @@ export default function CustomCompositionPage() {
                   letterSpacing: "0.02em",
                 }}
               >
-                {isPlacingMode
-                  ? `מציבה: ${selectedModel?.label} — לחצי על תא פנוי בלוח`
-                  : "לחצי ימין על סמל כדי להסיר · בחרי סמל להוספה"}
+                {hoveredBoardLabel
+                  ? `מוצב: ${hoveredBoardLabel} · לחיצה ימנית להסרה`
+                  : isPlacingMode
+                  ? `מצב הצבה: ${selectedModel?.label} · יש לבחור תא פנוי בלוח`
+                  : "לחיצה ימנית להסרה · ניתן לבחור סמל להוספה"}
               </p>
             )}
+
+            {/* Intent line */}
+            <p
+              style={{
+                margin: "16px 0 0",
+                fontSize: "13px",
+                color: "rgba(107,90,73,0.5)",
+                textAlign: "center",
+                lineHeight: 1.6,
+              }}
+            >
+              הלוח מוכן? ניתן לשלוח בקשה ולקבל הצעת מחיר בהתאמה אישית.
+            </p>
           </div>
         </div>
 

@@ -36,8 +36,7 @@ export default function AboutPage() {
             textAlign: "center",
           }}
         >
-          כל קיר הוא סיפור.
-          כל סמל הוא רגע.
+          כל קיר הוא סיפור. כל סמל הוא רגע.
         </p>
 
         <p

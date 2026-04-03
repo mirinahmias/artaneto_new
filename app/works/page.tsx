@@ -13,19 +13,19 @@ type WorkItem = {
 const works: WorkItem[] = [
   {
     id: 1,
-    title: "לוח מוכן 1",
+    title: "לוח — מסע",
     description: "תיאור קצר של הלוח — יוחלף בהמשך בתוכן האמיתי.",
     imageSrc: "/works/work-1.jpg",
   },
   {
     id: 2,
-    title: "לוח מוכן 2",
+    title: "לוח — זיכרון",
     description: "תיאור קצר של הלוח — יוחלף בהמשך בתוכן האמיתי.",
     imageSrc: "/works/work-2.jpg",
   },
   {
     id: 3,
-    title: "לוח מוכן 3",
+    title: "לוח — איזון",
     description: "תיאור קצר של הלוח — יוחלף בהמשך בתוכן האמיתי.",
     imageSrc: "/works/work-3.jpg",
   },
@@ -131,6 +131,19 @@ export default function WorksPage() {
           לוחות מוכנים — כל לוח הוא יצירה עצמאית, בנויה משפה סימבולית
           ומודולרית ייחודית.
         </p>
+
+        <p
+          style={{
+            fontSize: "14px",
+            color: "#8a7a5c",
+            textAlign: "center",
+            marginTop: "0",
+            marginBottom: "8px",
+            lineHeight: 1.6,
+          }}
+        >
+          כל לוח ניתן להזמנה בהתאמה אישית לפי הסיפור שלך.
+        </p>
       </section>
 
       <section
@@ -229,7 +242,7 @@ export default function WorksPage() {
                     textDecoration: "none",
                   }}
                 >
-                  לפרטים ורכישה
+                  לפרטים נוספים
                 </Link>
               </div>
             </article>

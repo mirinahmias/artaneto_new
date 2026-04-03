@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { getHomePage } from "./lib/fetchers/getHomePage";
+import { content } from "./content/content";
+
+const { hero, paths, about, values, technique, cta } = content.home;
 
 export default async function HomePage() {
   const page = await getHomePage();
-  const cta = page?.cta ?? {};
+  const pageCta = page?.cta ?? {};
 
   return (
     <main
@@ -35,7 +38,7 @@ export default async function HomePage() {
               textAlign: "center",
             }}
           >
-            <img src="/logo/artneto.logo.png" alt="ArtNeto" style={{ width: "286px", display: "block", margin: "0 auto" }} />
+            <img src="/logo/artneto.logo.png" alt={hero.logoAlt} style={{ width: "286px", display: "block", margin: "0 auto" }} />
 
             <h1
               style={{
@@ -48,10 +51,10 @@ export default async function HomePage() {
                 color: "#141009",
               }}
             >
-              לוחות זיכרון מודולריים
+              {hero.heading}
               <br />
               <span style={{ fontWeight: 400, color: "#3d3328" }}>
-                בתשעה סמלים
+                {hero.headingAccent}
               </span>
             </h1>
 
@@ -63,7 +66,9 @@ export default async function HomePage() {
                 maxWidth: "64ch",
               }}
             >
-              ArtNeto יוצרת קומפוזיציות קיר ייחודיות מאריחים מודולריים תלת־ממדיים. כל אריח הוא סמל — ויחד הם מרכיבים נרטיב ויזואלי אישי ועמוק.
+              {hero.tagline1}
+              <br />
+              {hero.tagline2}
             </p>
           </div>
 
@@ -83,7 +88,7 @@ export default async function HomePage() {
             >
               <img
                 src="/hero-board.jpg"
-                alt="לוח זיכרון מודולרי של ArtNeto"
+                alt={hero.heroImageAlt}
                 className="home-hero-image"
                 style={{
                   display: "block",
@@ -109,7 +114,7 @@ export default async function HomePage() {
                 maxWidth: "46ch",
               }}
             >
-              קומפוזיציות קיר תלת־ממדיות שנבנות מסמלים — לרכישה כיצירה שלמה, להרכבה אישית או לבחירת מודלים בודדים
+              {hero.description}
             </p>
 
             <div
@@ -117,37 +122,13 @@ export default async function HomePage() {
               style={{
                 display: "flex",
                 flexWrap: "wrap",
-                gap: "20px",
+                gap: "12px",
                 alignItems: "center",
                 justifyContent: "center",
                 width: "100%",
               }}
             >
-              {/* Primary */}
-              <Link
-                href="/works"
-                className="artneto-hero-cta-btn"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "52px",
-                  padding: "0 30px",
-                  background: "#1f1a17",
-                  color: "#f8f4ec",
-                  textDecoration: "none",
-                  borderRadius: "999px",
-                  fontSize: "15px",
-                  fontWeight: 600,
-                  letterSpacing: "-0.01em",
-                  boxShadow: "0 8px 28px rgba(31,26,23,0.18)",
-                  transition: "opacity 0.18s ease",
-                }}
-              >
-                צפייה בלוחות מוכנים
-              </Link>
-
-              {/* Secondary */}
+              {/* Primary — בניית לוח אישי */}
               <Link
                 href="/custom-composition"
                 className="artneto-hero-cta-btn"
@@ -156,7 +137,7 @@ export default async function HomePage() {
                   alignItems: "center",
                   justifyContent: "center",
                   minHeight: "52px",
-                  padding: "0 30px",
+                  padding: "0 32px",
                   background: "#1f1a17",
                   color: "#f8f4ec",
                   textDecoration: "none",
@@ -164,14 +145,38 @@ export default async function HomePage() {
                   fontSize: "15px",
                   fontWeight: 600,
                   letterSpacing: "-0.01em",
-                  boxShadow: "0 8px 28px rgba(31,26,23,0.18)",
+                  boxShadow: "0 8px 28px rgba(31,26,23,0.22)",
                   transition: "opacity 0.18s ease",
                 }}
               >
-                בניית לוח אישי
+                {hero.ctaCustom}
               </Link>
 
-              {/* Tertiary */}
+              {/* Secondary — צפייה בלוחות מוכנים */}
+              <Link
+                href="/works"
+                className="artneto-hero-cta-btn"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minHeight: "52px",
+                  padding: "0 28px",
+                  background: "transparent",
+                  color: "#1f1a17",
+                  textDecoration: "none",
+                  borderRadius: "999px",
+                  fontSize: "15px",
+                  fontWeight: 500,
+                  letterSpacing: "-0.01em",
+                  border: "1.5px solid rgba(31,26,23,0.32)",
+                  transition: "opacity 0.18s ease",
+                }}
+              >
+                {hero.ctaWorks}
+              </Link>
+
+              {/* Tertiary — בחירת סמלים בודדים */}
               <Link
                 href="/single-models"
                 className="artneto-hero-cta-btn"
@@ -180,24 +185,27 @@ export default async function HomePage() {
                   alignItems: "center",
                   justifyContent: "center",
                   minHeight: "52px",
-                  padding: "0 30px",
-                  background: "#1f1a17",
-                  color: "#f8f4ec",
+                  padding: "0 24px",
+                  background: "rgba(31,26,23,0.06)",
+                  color: "#4a4038",
                   textDecoration: "none",
                   borderRadius: "999px",
-                  fontSize: "15px",
-                  fontWeight: 600,
+                  fontSize: "14px",
+                  fontWeight: 500,
                   letterSpacing: "-0.01em",
-                  boxShadow: "0 8px 28px rgba(31,26,23,0.18)",
                   transition: "opacity 0.18s ease",
                 }}
               >
-                בחירת סמלים בודדים
+                {hero.ctaSingle}
               </Link>
             </div>
 
             <p style={{ fontSize: "14px", color: "#8a7a5c", marginTop: "12px", opacity: 0.9, textAlign: "center" }}>
-              מודלים בודדים החל מ־₪XX
+              {hero.priceNote}
+            </p>
+
+            <p style={{ fontSize: "14px", color: "#7a6a52", marginTop: "20px", textAlign: "center", lineHeight: 1.6 }}>
+              {hero.personalNote}
             </p>
           </div>
         </section>
@@ -217,200 +225,73 @@ export default async function HomePage() {
               gap: "18px",
             }}
           >
-            <article
-              style={{
-                background: "rgba(255,255,255,0.58)",
-                border: "1px solid rgba(96, 77, 54, 0.09)",
-                borderRadius: "28px",
-                padding: "28px 24px 26px",
-                boxShadow: "0 12px 36px rgba(60,42,22,0.05)",
-                textAlign: "center",
-              }}
-            >
-              <div
-                className="t-small"
+            {paths.map((path) => (
+              <article
+                key={path.title}
                 style={{
-                  color: "#907e6a",
-                  marginBottom: "9px",
-                  letterSpacing: "0.09em",
-                  textTransform: "uppercase",
+                  background: "rgba(255,255,255,0.58)",
+                  border: "1px solid rgba(96, 77, 54, 0.09)",
+                  borderRadius: "28px",
+                  padding: "28px 24px 26px",
+                  boxShadow: "0 12px 36px rgba(60,42,22,0.05)",
+                  textAlign: "center",
                 }}
               >
-                מסלול ראשון
-              </div>
+                <div
+                  className="t-small"
+                  style={{
+                    color: "#907e6a",
+                    marginBottom: "9px",
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {path.label}
+                </div>
 
-              <h2
-                className="t-subtitle"
-                style={{
-                  margin: "0 0 12px 0",
-                  fontWeight: 650,
-                  color: "#141009",
-                  letterSpacing: "-0.015em",
-                }}
-              >
-                לוחות מוכנים
-              </h2>
+                <h2
+                  className="t-subtitle"
+                  style={{
+                    margin: "0 0 12px 0",
+                    fontWeight: 650,
+                    color: "#141009",
+                    letterSpacing: "-0.015em",
+                  }}
+                >
+                  {path.title}
+                </h2>
 
-              <p
-                className="t-body"
-                style={{
-                  margin: "0 auto 20px",
-                  color: "#5d5349",
-                  maxWidth: "26ch",
-                }}
-              >
-                עבודות מוגמרות הבנויות מ־9 יחידות סמליות, שנוצרו כקומפוזיציות שלמות בעלות נוכחות פיסולית וזהות חזותית ברורה.
-              </p>
+                <p
+                  className="t-body"
+                  style={{
+                    margin: "0 auto 20px",
+                    color: "#5d5349",
+                    maxWidth: "26ch",
+                  }}
+                >
+                  {path.description}
+                </p>
 
-              <Link
-                href="/works"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "44px",
-                  padding: "0 22px",
-                  background: "#1f1a17",
-                  color: "#f8f4ec",
-                  textDecoration: "none",
-                  borderRadius: "999px",
-                  fontSize: "14px",
-                  fontWeight: 500,
-                }}
-              >
-                לעמוד הלוחות
-              </Link>
-            </article>
-
-            <article
-              style={{
-                background: "rgba(255,255,255,0.58)",
-                border: "1px solid rgba(96, 77, 54, 0.09)",
-                borderRadius: "28px",
-                padding: "28px 24px 26px",
-                boxShadow: "0 12px 36px rgba(60,42,22,0.05)",
-                textAlign: "center",
-              }}
-            >
-              <div
-                className="t-small"
-                style={{
-                  color: "#907e6a",
-                  marginBottom: "9px",
-                  letterSpacing: "0.09em",
-                  textTransform: "uppercase",
-                }}
-              >
-                מסלול שני
-              </div>
-
-              <h2
-                className="t-subtitle"
-                style={{
-                  margin: "0 0 12px 0",
-                  fontWeight: 650,
-                  color: "#141009",
-                  letterSpacing: "-0.015em",
-                }}
-              >
-                הרכבה אישית
-              </h2>
-
-              <p
-                className="t-body"
-                style={{
-                  margin: "0 auto 20px",
-                  color: "#5d5349",
-                  maxWidth: "26ch",
-                }}
-              >
-                גלריות נושא עם מודלים סמליים לבחירה — מהם ניתן להרכיב לוח אישי שמספר את הסיפור שלך דרך סימנים, זיכרונות וערכים.
-              </p>
-
-              <Link
-                href="/custom-composition"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "44px",
-                  padding: "0 22px",
-                  background: "#1f1a17",
-                  color: "#f8f4ec",
-                  textDecoration: "none",
-                  borderRadius: "999px",
-                  fontSize: "14px",
-                  fontWeight: 500,
-                }}
-              >
-                להתחיל לבחור סמלים
-              </Link>
-            </article>
-
-            <article
-              style={{
-                background: "rgba(255,255,255,0.58)",
-                border: "1px solid rgba(96, 77, 54, 0.09)",
-                borderRadius: "28px",
-                padding: "28px 24px 26px",
-                boxShadow: "0 12px 36px rgba(60,42,22,0.05)",
-                textAlign: "center",
-              }}
-            >
-              <div
-                className="t-small"
-                style={{
-                  color: "#907e6a",
-                  marginBottom: "9px",
-                  letterSpacing: "0.09em",
-                  textTransform: "uppercase",
-                }}
-              >
-                מסלול שלישי
-              </div>
-
-              <h2
-                className="t-subtitle"
-                style={{
-                  margin: "0 0 12px 0",
-                  fontWeight: 650,
-                  color: "#141009",
-                  letterSpacing: "-0.015em",
-                }}
-              >
-                מודלים בודדים
-              </h2>
-
-              <p
-                className="t-body"
-                style={{
-                  margin: "0 auto 20px",
-                  color: "#5d5349",
-                  maxWidth: "26ch",
-                }}
-              >
-                אפשרות לבחור ולרכוש סמלים כיחידות נפרדות — להשלמה, לאיסוף, או לשילוב אישי בפרויקטים ובהרכבות עתידיות.
-              </p>
-
-              <Link
-                href="/single-models"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "44px",
-                  padding: "0 22px",
-                  background: "#1f1a17",
-                  color: "#f8f4ec",
-                  textDecoration: "none",
-                  borderRadius: "999px",
-                  fontSize: "14px",
-                  fontWeight: 500,
-                }}
-              >
-                לעמוד המודלים
-              </Link>
-            </article>
+                <Link
+                  href={path.href}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minHeight: "44px",
+                    padding: "0 22px",
+                    background: "#1f1a17",
+                    color: "#f8f4ec",
+                    textDecoration: "none",
+                    borderRadius: "999px",
+                    fontSize: "14px",
+                    fontWeight: 500,
+                  }}
+                >
+                  {path.cta}
+                </Link>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -445,7 +326,7 @@ export default async function HomePage() {
                   textTransform: "uppercase",
                 }}
               >
-                על המותג
+                {about.label}
               </div>
 
               <h2
@@ -457,9 +338,9 @@ export default async function HomePage() {
                   letterSpacing: "-0.022em",
                 }}
               >
-                אמנות קיר
+                {about.title}
                 <br />
-                סימבולית ומודולרית
+                {about.titleAccent}
               </h2>
 
               <p
@@ -469,7 +350,7 @@ export default async function HomePage() {
                   color: "#5d5349",
                 }}
               >
-                הטכניקה משלבת הדפסת תלת־ממד, בס־רליף, ומרקמים מעורבים ליצירת יצירות אמנות שהן גם פיסוליות וגם אינטימיות, שמספרות את הסיפור שלך.
+                {about.paragraph1}
               </p>
 
               <p
@@ -479,7 +360,7 @@ export default async function HomePage() {
                   color: "#5d5349",
                 }}
               >
-                ArtNeto נולד מתוך אמונה פשוטה: הקיר שלנו יכול לספר מי אנחנו. לא כתמונה שקנינו בחנות, אלא כנרטיב ויזואלי שנבנה מסמלים שבחרנו בעצמנו.
+                {about.paragraph2}
               </p>
             </div>
           </div>
@@ -508,7 +389,7 @@ export default async function HomePage() {
                 textTransform: "uppercase",
               }}
             >
-              הערכים שלנו
+              {values.label}
             </div>
 
             <h2
@@ -520,7 +401,7 @@ export default async function HomePage() {
                 letterSpacing: "-0.022em",
               }}
             >
-              ארבעה עמודי תווך
+              {values.title}
             </h2>
           </div>
 
@@ -532,24 +413,7 @@ export default async function HomePage() {
               gap: "16px",
             }}
           >
-            {[
-              {
-                title: "סמליות",
-                text: "כל סמל שאנחנו בוחרים לשים על הקיר שלנו מספר משהו על מי שאנחנו. ArtNeto מאמינה שהאמנות הטובה ביותר היא זו שמדברת בשפה אישית ועמוקה.",
-              },
-              {
-                title: "זיכרון",
-                text: "יצירות ArtNeto מיועדות להיות עוגנים של זיכרון. כל קומפוזיציה יכולה לייצג אדם אהוב, תקופה חשובה או ערכים שמנחים אותנו.",
-              },
-              {
-                title: "מרקמים",
-                text: "המרקם הוא נשמת היצירה. גבס מוחלק, שכבות של צבע ועלי זהב שנמרחים ביד — כל יצירה היא חוויה מישושית שמזמינה להתבונן מקרוב.",
-              },
-              {
-                title: "הדפסת תלת־ממד",
-                text: "הטכנולוגיה משרתת את האמנות. הדפסת תלת־ממד מאפשרת עומק ופרטים עדינים שלא ניתן להשיג בשיטות מסורתיות.",
-              },
-            ].map((item) => (
+            {values.items.map((item) => (
               <article
                 key={item.title}
                 style={{
@@ -611,7 +475,7 @@ export default async function HomePage() {
                 textTransform: "uppercase",
               }}
             >
-              הטכניקה
+              {technique.label}
             </div>
 
             <h2
@@ -623,7 +487,7 @@ export default async function HomePage() {
                 letterSpacing: "-0.022em",
               }}
             >
-              מהדיגיטל לאמנות יד
+              {technique.title}
             </h2>
           </div>
 
@@ -635,24 +499,7 @@ export default async function HomePage() {
               gap: "16px",
             }}
           >
-            {[
-              {
-                title: "עיצוב דיגיטלי",
-                text: "כל סמל מעוצב בתוכנת תלת־ממד עם תשומת לב לפרטים — עומק הרליף, מרקם פני השטח ופרופורציות מדויקות.",
-              },
-              {
-                title: "הדפסת תלת־ממד",
-                text: "האריחים מודפסים בפולימר איכותי, המאפשר פרטים עדינים ועומק רליף שלא ניתן להשיג בשיטות מסורתיות.",
-              },
-              {
-                title: "גיבוס ומרקמים",
-                text: "כל אריח מקבל שכבות של גבס, מרקמים ייחודיים וצבעים — תהליך ידני שמעניק לכל יצירה אופי ייחודי.",
-              },
-              {
-                title: "ציפוי זהב ופינישינג",
-                text: "עלי זהב, פטינה ברונזה או ציפויים מיוחדים מוחלים ביד — שכבה אחרונה שמעניקה לכל יצירה את הברק הסופי.",
-              },
-            ].map((item) => (
+            {technique.items.map((item) => (
               <article
                 key={item.title}
                 style={{
@@ -723,7 +570,7 @@ export default async function HomePage() {
                   textTransform: "uppercase",
                 }}
               >
-                יצירה מותאמת אישית
+                {cta.label}
               </div>
 
               <h2
@@ -734,7 +581,7 @@ export default async function HomePage() {
                   letterSpacing: "-0.022em",
                 }}
               >
-                {cta.title || "רוצה לבנות עבודה ייחודית לחלל שלך?"}
+                {pageCta.title || cta.titleFallback}
               </h2>
 
               <p
@@ -745,11 +592,11 @@ export default async function HomePage() {
                   maxWidth: "52ch",
                 }}
               >
-                {cta.description || "ניתן ליצור קומפוזיציה מותאמת אישית."}
+                {pageCta.description || cta.descriptionFallback}
               </p>
 
               <Link
-                href={cta.href || "/contact"}
+                href={pageCta.href || cta.ctaHrefFallback}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -765,7 +612,7 @@ export default async function HomePage() {
                   letterSpacing: "-0.01em",
                 }}
               >
-                {cta.label || "לדבר על יצירה"}
+                {pageCta.label || cta.ctaLabelFallback}
               </Link>
             </div>
           </div>

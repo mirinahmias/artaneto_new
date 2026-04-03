@@ -73,8 +73,20 @@ export default function SingleModelsPage() {
             textAlign: "center",
           }}
         >
-          בחרי מתוך 10 נושאים מרכזיים. כל נושא מכיל מודלים עצמאיים הניתנים
-          לשילוב בלוח אישי.
+          בחירה מתוך מגוון סמלים להרכבה אישית של לוח.
+        </p>
+
+        <p
+          style={{
+            fontSize: "14px",
+            color: "#8a7a5c",
+            textAlign: "center",
+            marginTop: "0",
+            marginBottom: "8px",
+            lineHeight: 1.6,
+          }}
+        >
+          הסמלים מהווים בסיס להרכבת לוח אישי או שילוב בעבודה קיימת.
         </p>
       </section>
 

@@ -135,13 +135,11 @@ export default function ContactPage() {
           </div>
 
           <h1 style={{ fontSize: "32px", fontWeight: 600, letterSpacing: "-0.01em", lineHeight: 1.2, marginBottom: "12px", textAlign: "center" }}>
-            כל סיפור מתחיל בסמל אחד
+            שליחת פנייה
           </h1>
 
           <p style={{ fontSize: "16px", lineHeight: 1.6, color: "#6b5e4a", maxWidth: "560px", margin: "0 auto 28px auto", textAlign: "center" }}>
-            ואולי שלך כבר מחכה להפוך ללוח.
-            <br />
-            מקום קטן על הקיר, שמחזיק משהו גדול יותר.
+            תיאור קצר של הלוח המבוקש יסייע בהתאמה מדויקת.
           </p>
         </div>
       </section>
@@ -216,7 +214,7 @@ export default function ContactPage() {
             </div>
 
             <div className="contact-button-row">
-              <button type="submit" className="contact-submit">שליחה</button>
+              <button type="submit" className="contact-submit">שליחת פנייה</button>
             </div>
           </form>
 
