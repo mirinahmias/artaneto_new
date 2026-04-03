@@ -56,10 +56,9 @@ export default async function TopicPage({ params }: TopicPageProps) {
         </Link>
 
         <h1
+          className="t-display"
           style={{
             margin: "0 0 10px",
-            fontSize: "52px",
-            lineHeight: 1.1,
             fontWeight: 700,
           }}
         >
@@ -67,9 +66,9 @@ export default async function TopicPage({ params }: TopicPageProps) {
         </h1>
 
         <div
+          className="t-small"
           style={{
             marginBottom: "18px",
-            fontSize: "16px",
             fontWeight: 600,
             color: "#8b7355",
           }}
@@ -78,11 +77,10 @@ export default async function TopicPage({ params }: TopicPageProps) {
         </div>
 
         <p
+          className="t-body"
           style={{
             margin: "0 auto",
             maxWidth: "850px",
-            fontSize: "18px",
-            lineHeight: 1.9,
             color: "#6b5a49",
           }}
         >
@@ -139,9 +137,9 @@ export default async function TopicPage({ params }: TopicPageProps) {
               </div>
 
               <h2
+                className="t-subtitle"
                 style={{
                   margin: "0 0 12px",
-                  fontSize: "24px",
                   fontWeight: 700,
                 }}
               >
@@ -149,10 +147,9 @@ export default async function TopicPage({ params }: TopicPageProps) {
               </h2>
 
               <p
+                className="t-body"
                 style={{
                   margin: "0 0 18px",
-                  fontSize: "15px",
-                  lineHeight: 1.9,
                   color: "#6b5a49",
                 }}
               >
@@ -170,13 +167,13 @@ export default async function TopicPage({ params }: TopicPageProps) {
                 {item.tags.map((tag) => (
                   <span
                     key={tag}
+                    className="t-small"
                     style={{
                       border: "1px solid #dccdbb",
                       backgroundColor: "#faf5ee",
                       color: "#5f4d3c",
                       borderRadius: "999px",
                       padding: "6px 12px",
-                      fontSize: "12px",
                       fontWeight: 600,
                     }}
                   >

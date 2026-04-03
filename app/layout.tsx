@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "ArtNeto",
   description: "ArtNeto — אמנות תבליט מודולרית, שפה סימבולית וחוויה אוצרותית אישית.",
 };
 
-const navItems: { href: string | null; label: string }[] = [
+const navItems: { href: string; label: string }[] = [
   { href: "/", label: "בית" },
   { href: "/works", label: "עבודות" },
   { href: "/single-models", label: "מודלים בודדים" },
   { href: "/custom-composition", label: "הרכבה אישית" },
-  { href: null, label: "על המותג" },
-  { href: null, label: "יצירת קשר" },
+  { href: "/about", label: "על המותג" },
+  { href: "/contact", label: "יצירת קשר" },
 ];
 
 export default function RootLayout({
@@ -22,65 +23,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl">
-      <body className="artneto-body">
-        <div className="artneto-site">
+      <body
+        className="artneto-body"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+        }}
+      >
           <header className="artneto-header">
             <div className="artneto-header-inner">
-              <a href="/" className="artneto-brand" aria-label="ArtNeto - דף הבית">
-                <img
-                  src="/logo/artneto.logo.png"
-                  alt="ArtNeto"
-                  style={{
-                    height: "74px",
-                    width: "auto",
-                    display: "block",
-                    objectFit: "contain",
-                  }}
-                />
-              </a>
-
               <nav className="artneto-nav" aria-label="ניווט ראשי">
-                {navItems.map((item) =>
-                  item.href ? (
-                    <a key={item.label} href={item.href} className="artneto-nav-link">
-                      {item.label}
-                    </a>
-                  ) : (
-                    <span key={item.label} className="artneto-nav-link artneto-nav-link--disabled">
-                      {item.label}
-                    </span>
-                  )
-                )}
+                {navItems.map((item) => (
+                  <a key={item.label} href={item.href} className="artneto-nav-link">
+                    {item.label}
+                  </a>
+                ))}
               </nav>
             </div>
           </header>
 
-          <main className="artneto-main">{children}</main>
+          <main className="artneto-main" style={{ flex: 1 }}>{children}</main>
 
-          <footer className="artneto-footer">
-            <div className="artneto-footer-inner">
-              <div className="artneto-footer-brand">ArtNeto</div>
-
-              <p className="artneto-footer-text">
-                אמנות תבליט מודולרית, שפה סימבולית וחוויה אוצרותית אישית.
-              </p>
-
-              <nav className="artneto-footer-nav" aria-label="ניווט תחתון">
-                {navItems.map((item) =>
-                  item.href ? (
-                    <a key={item.label} href={item.href} className="artneto-footer-link">
-                      {item.label}
-                    </a>
-                  ) : (
-                    <span key={item.label} className="artneto-footer-link artneto-footer-link--disabled">
-                      {item.label}
-                    </span>
-                  )
-                )}
-              </nav>
-            </div>
-          </footer>
-        </div>
+          <Footer />
 
         <style>{`
           * {
@@ -121,11 +86,11 @@ export default function RootLayout({
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 110px;
+            padding: 0 24px;
             min-height: 86px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             gap: 24px;
           }
 
@@ -145,19 +110,24 @@ export default function RootLayout({
           .artneto-nav {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             flex-wrap: wrap;
-            gap: 10px 22px;
+            gap: 10px 32px;
           }
 
           .artneto-nav-link {
             text-decoration: none;
             color: #d7c59a;
-            font-size: 15px;
-            line-height: 1.4;
+            font-size: 18px;
             font-weight: 600;
+            letter-spacing: 0.02em;
             white-space: nowrap;
             transition: opacity 0.2s ease;
+          }
+
+          .artneto-nav-link:hover,
+          .artneto-footer-link:hover {
+            opacity: 0.82;
           }
 
           .artneto-footer {
@@ -207,26 +177,10 @@ export default function RootLayout({
             transition: opacity 0.2s ease;
           }
 
-          .artneto-nav-link--disabled,
-          .artneto-footer-link--disabled {
-            opacity: 0.38;
-            cursor: default;
-          }
-
-          .artneto-nav-link:hover,
-          .artneto-footer-link:hover {
-            opacity: 0.82;
-          }
-
-          .artneto-nav-link--disabled:hover,
-          .artneto-footer-link--disabled:hover {
-            opacity: 0.38;
-          }
-
           @media (max-width: 1100px) {
             .artneto-header-inner {
-              padding-left: 56px;
-              padding-right: 56px;
+              padding-left: 24px;
+              padding-right: 24px;
             }
           }
 

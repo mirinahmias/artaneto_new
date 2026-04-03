@@ -78,7 +78,6 @@ export default function WorksPage() {
     <main
       dir="rtl"
       style={{
-        minHeight: "100vh",
         background: "#f5f1ea",
         color: "#2f261f",
       }}
@@ -108,11 +107,12 @@ export default function WorksPage() {
 
         <h1
           style={{
-            margin: "0 0 20px",
-            fontSize: "64px",
-            lineHeight: 1.05,
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
+            fontSize: "32px",
+            fontWeight: 600,
+            letterSpacing: "-0.01em",
+            lineHeight: 1.2,
+            marginBottom: "12px",
+            textAlign: "center",
           }}
         >
           עבודות
@@ -120,11 +120,12 @@ export default function WorksPage() {
 
         <p
           style={{
-            margin: "0 auto",
-            maxWidth: "900px",
-            fontSize: "22px",
-            lineHeight: 1.9,
-            color: "#6b5a49",
+            fontSize: "16px",
+            lineHeight: 1.6,
+            color: "#6b5e4a",
+            maxWidth: "560px",
+            margin: "0 auto 28px auto",
+            textAlign: "center",
           }}
         >
           לוחות מוכנים — כל לוח הוא יצירה עצמאית, בנויה משפה סימבולית
@@ -141,8 +142,9 @@ export default function WorksPage() {
       >
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             gap: "20px",
           }}
         >
@@ -150,6 +152,8 @@ export default function WorksPage() {
             <article
               key={work.id}
               style={{
+                flex: "1 1 280px",
+                maxWidth: "380px",
                 backgroundColor: "#fcfbf8",
                 border: "1px solid #d8c7b3",
                 borderRadius: "28px",
@@ -159,29 +163,35 @@ export default function WorksPage() {
             >
               <div
                 style={{
-                  position: "relative",
-                  aspectRatio: "1 / 1",
-                  borderRadius: "22px",
-                  border: "1px solid #eadfce",
-                  background:
-                    "linear-gradient(135deg, #f6efe5 0%, #fbf8f3 50%, #efe4d5 100%)",
-                  overflow: "hidden",
+                  padding: "8px",
+                  backgroundColor: "#F4F1EA",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(0,0,0,0.08)",
                   marginBottom: "18px",
                 }}
               >
-                <Image
-                  src={work.imageSrc}
-                  alt={work.title}
-                  fill
-                  style={{ objectFit: "contain" }}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
+                <div
+                  style={{
+                    position: "relative",
+                    aspectRatio: "1 / 1",
+                    borderRadius: "8px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <Image
+                    src={work.imageSrc}
+                    alt={work.title}
+                    fill
+                    style={{ display: "block", width: "100%", borderRadius: "8px", objectFit: "contain" }}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
               </div>
 
               <h2
+                className="t-subtitle"
                 style={{
                   margin: "0 0 12px",
-                  fontSize: "24px",
                   fontWeight: 700,
                 }}
               >
@@ -189,10 +199,9 @@ export default function WorksPage() {
               </h2>
 
               <p
+                className="t-body"
                 style={{
                   margin: "0 0 18px",
-                  fontSize: "15px",
-                  lineHeight: 1.9,
                   color: "#6b5a49",
                 }}
               >
@@ -214,8 +223,8 @@ export default function WorksPage() {
                     backgroundColor: "#2f261f",
                     color: "#f8f4ee",
                     borderRadius: "999px",
-                    padding: "6px 16px",
-                    fontSize: "13px",
+                    padding: "10px 22px",
+                    fontSize: "14px",
                     fontWeight: 600,
                     textDecoration: "none",
                   }}

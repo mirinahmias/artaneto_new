@@ -228,3 +228,21 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* =========================
+   TYPOGRAPHY SCALE
+========================= */
+
+.t-display  { font-size: 56px; line-height: 1.1; }
+.t-title    { font-size: 36px; line-height: 1.2; }
+.t-subtitle { font-size: 24px; line-height: 1.25; }
+.t-body     { font-size: 18px; line-height: 1.6; }
+.t-small    { font-size: 14px; line-height: 1.4; }
+
+@media (max-width: 640px) {
+  .t-display  { font-size: 36px; }
+  .t-title    { font-size: 28px; }
+  .t-subtitle { font-size: 20px; }
+  .t-body     { font-size: 16px; }
+  .t-small    { font-size: 13px; }
+}

@@ -11,7 +11,6 @@ export default async function HomePage() {
       style={{
         background: "#f5f1e8",
         color: "#1c1917",
-        minHeight: "100vh",
       }}
     >
       <div
@@ -25,37 +24,43 @@ export default async function HomePage() {
         {/* HERO */}
         <section
           style={{
-            paddingTop: "72px",
-            paddingBottom: "92px",
+            paddingTop: "64px",
+            paddingBottom: "32px",
           }}
         >
           <div
             style={{
-              maxWidth: "900px",
+              maxWidth: "700px",
               margin: "0 auto",
               textAlign: "center",
             }}
           >
+            <img src="/logo/artneto.logo.png" alt="ArtNeto" style={{ width: "286px", display: "block", margin: "0 auto" }} />
+
             <h1
               style={{
-                margin: "0 0 20px 0",
-                fontSize: "clamp(2.2rem, 5vw, 4.2rem)",
-                lineHeight: 1.12,
+                fontSize: "36px",
                 fontWeight: 600,
-                letterSpacing: "-0.035em",
-                color: "#181512",
+                lineHeight: 1.2,
+                letterSpacing: "-0.01em",
+                marginBottom: "16px",
+                textAlign: "center",
+                color: "#141009",
               }}
             >
-              לוחות זיכרון מודולריים ב־9 סמלים
+              לוחות זיכרון מודולריים
+              <br />
+              <span style={{ fontWeight: 400, color: "#3d3328" }}>
+                בתשעה סמלים
+              </span>
             </h1>
 
             <p
+              className="t-body"
               style={{
-                margin: "0 auto 34px",
-                fontSize: "clamp(1rem, 1.35vw, 1.14rem)",
-                lineHeight: 1.9,
+                margin: "0 auto 30px",
                 color: "#5a5046",
-                maxWidth: "60ch",
+                maxWidth: "64ch",
               }}
             >
               ArtNeto יוצרת קומפוזיציות קיר ייחודיות מאריחים מודולריים תלת־ממדיים. כל אריח הוא סמל — ויחד הם מרכיבים נרטיב ויזואלי אישי ועמוק.
@@ -64,30 +69,26 @@ export default async function HomePage() {
 
           <div
             style={{
-              maxWidth: "760px",
-              margin: "0 auto 34px",
+              maxWidth: "560px",
+              margin: "0 auto 32px",
             }}
           >
             <div
               style={{
                 width: "100%",
                 aspectRatio: "1 / 1",
-                borderRadius: "10px",
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.32) 0%, rgba(239,233,223,0.72) 100%)",
                 overflow: "hidden",
-                boxShadow: "0 24px 60px rgba(60,42,22,0.10)",
-                border: "1px solid rgba(104, 83, 57, 0.10)",
+                boxShadow: "0 20px 52px rgba(60,42,22,0.10)",
               }}
             >
               <img
                 src="/hero-board.jpg"
                 alt="לוח זיכרון מודולרי של ArtNeto"
+                className="home-hero-image"
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
                   display: "block",
+                  margin: "0 auto",
+                  maxWidth: "100%",
                 }}
               />
             </div>
@@ -95,18 +96,17 @@ export default async function HomePage() {
 
           <div
             style={{
-              maxWidth: "860px",
+              maxWidth: "700px",
               margin: "0 auto",
               textAlign: "center",
             }}
           >
             <p
+              className="t-body"
               style={{
-                margin: "0 auto 24px",
-                fontSize: "clamp(1rem, 1.2vw, 1.08rem)",
-                lineHeight: 1.9,
-                color: "#5a5046",
-                maxWidth: "48ch",
+                margin: "0 auto 28px",
+                color: "#6a5e52",
+                maxWidth: "46ch",
               }}
             >
               קומפוזיציות קיר תלת־ממדיות שנבנות מסמלים — לרכישה כיצירה שלמה, להרכבה אישית או לבחירת מודלים בודדים
@@ -117,71 +117,88 @@ export default async function HomePage() {
               style={{
                 display: "flex",
                 flexWrap: "wrap",
-                gap: "14px",
+                gap: "20px",
                 alignItems: "center",
                 justifyContent: "center",
+                width: "100%",
               }}
             >
+              {/* Primary */}
               <Link
                 href="/works"
+                className="artneto-hero-cta-btn"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
                   minHeight: "52px",
-                  padding: "0 28px",
+                  padding: "0 30px",
                   background: "#1f1a17",
                   color: "#f8f4ec",
                   textDecoration: "none",
                   borderRadius: "999px",
                   fontSize: "15px",
-                  fontWeight: 500,
-                  boxShadow: "0 10px 30px rgba(31,26,23,0.10)",
+                  fontWeight: 600,
+                  letterSpacing: "-0.01em",
+                  boxShadow: "0 8px 28px rgba(31,26,23,0.18)",
+                  transition: "opacity 0.18s ease",
                 }}
               >
-                לצפייה בלוחות מוכנים
+                צפייה בלוחות מוכנים
               </Link>
 
+              {/* Secondary */}
               <Link
-                href="/custom"
+                href="/custom-composition"
+                className="artneto-hero-cta-btn"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
                   minHeight: "52px",
-                  padding: "0 28px",
-                  background: "transparent",
-                  color: "#312923",
+                  padding: "0 30px",
+                  background: "#1f1a17",
+                  color: "#f8f4ec",
                   textDecoration: "none",
                   borderRadius: "999px",
                   fontSize: "15px",
-                  fontWeight: 500,
-                  border: "1px solid rgba(77, 63, 45, 0.18)",
+                  fontWeight: 600,
+                  letterSpacing: "-0.01em",
+                  boxShadow: "0 8px 28px rgba(31,26,23,0.18)",
+                  transition: "opacity 0.18s ease",
                 }}
               >
-                להרכבת לוח אישי
+                בניית לוח אישי
               </Link>
 
+              {/* Tertiary */}
               <Link
-                href="/models"
+                href="/single-models"
+                className="artneto-hero-cta-btn"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
                   minHeight: "52px",
-                  padding: "0 28px",
-                  background: "rgba(255,255,255,0.55)",
-                  color: "#312923",
+                  padding: "0 30px",
+                  background: "#1f1a17",
+                  color: "#f8f4ec",
                   textDecoration: "none",
                   borderRadius: "999px",
                   fontSize: "15px",
-                  fontWeight: 500,
-                  border: "1px solid rgba(77, 63, 45, 0.14)",
+                  fontWeight: 600,
+                  letterSpacing: "-0.01em",
+                  boxShadow: "0 8px 28px rgba(31,26,23,0.18)",
+                  transition: "opacity 0.18s ease",
                 }}
               >
-                לקניית מודלים בודדים
+                בחירת סמלים בודדים
               </Link>
             </div>
+
+            <p style={{ fontSize: "14px", color: "#8a7a5c", marginTop: "12px", opacity: 0.9, textAlign: "center" }}>
+              מודלים בודדים החל מ־₪XX
+            </p>
           </div>
         </section>
 
@@ -189,7 +206,7 @@ export default async function HomePage() {
         <section
           style={{
             paddingTop: "0",
-            paddingBottom: "92px",
+            paddingBottom: "72px",
           }}
         >
           <div
@@ -197,49 +214,49 @@ export default async function HomePage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-              gap: "24px",
+              gap: "18px",
             }}
           >
             <article
               style={{
-                background: "rgba(255,255,255,0.52)",
-                border: "1px solid rgba(96, 77, 54, 0.08)",
-                borderRadius: "30px",
-                padding: "34px 28px",
-                boxShadow: "0 18px 46px rgba(60,42,22,0.04)",
+                background: "rgba(255,255,255,0.58)",
+                border: "1px solid rgba(96, 77, 54, 0.09)",
+                borderRadius: "28px",
+                padding: "28px 24px 26px",
+                boxShadow: "0 12px 36px rgba(60,42,22,0.05)",
                 textAlign: "center",
               }}
             >
               <div
+                className="t-small"
                 style={{
-                  fontSize: "12px",
-                  color: "#a08f7b",
-                  marginBottom: "12px",
-                  letterSpacing: "0.08em",
+                  color: "#907e6a",
+                  marginBottom: "9px",
+                  letterSpacing: "0.09em",
+                  textTransform: "uppercase",
                 }}
               >
                 מסלול ראשון
               </div>
 
               <h2
+                className="t-subtitle"
                 style={{
-                  margin: "0 0 16px 0",
-                  fontSize: "clamp(1.4rem, 2vw, 1.9rem)",
-                  lineHeight: 1.25,
-                  fontWeight: 500,
-                  color: "#181512",
+                  margin: "0 0 12px 0",
+                  fontWeight: 650,
+                  color: "#141009",
+                  letterSpacing: "-0.015em",
                 }}
               >
                 לוחות מוכנים
               </h2>
 
               <p
+                className="t-body"
                 style={{
-                  margin: "0 auto 22px",
-                  fontSize: "15px",
-                  lineHeight: 1.8,
+                  margin: "0 auto 20px",
                   color: "#5d5349",
-                  maxWidth: "28ch",
+                  maxWidth: "26ch",
                 }}
               >
                 עבודות מוגמרות הבנויות מ־9 יחידות סמליות, שנוצרו כקומפוזיציות שלמות בעלות נוכחות פיסולית וזהות חזותית ברורה.
@@ -251,13 +268,13 @@ export default async function HomePage() {
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  minHeight: "48px",
+                  minHeight: "44px",
                   padding: "0 22px",
                   background: "#1f1a17",
                   color: "#f8f4ec",
                   textDecoration: "none",
                   borderRadius: "999px",
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: 500,
                 }}
               >
@@ -267,64 +284,63 @@ export default async function HomePage() {
 
             <article
               style={{
-                background: "rgba(255,255,255,0.52)",
-                border: "1px solid rgba(96, 77, 54, 0.08)",
-                borderRadius: "30px",
-                padding: "34px 28px",
-                boxShadow: "0 18px 46px rgba(60,42,22,0.04)",
+                background: "rgba(255,255,255,0.58)",
+                border: "1px solid rgba(96, 77, 54, 0.09)",
+                borderRadius: "28px",
+                padding: "28px 24px 26px",
+                boxShadow: "0 12px 36px rgba(60,42,22,0.05)",
                 textAlign: "center",
               }}
             >
               <div
+                className="t-small"
                 style={{
-                  fontSize: "12px",
-                  color: "#a08f7b",
-                  marginBottom: "12px",
-                  letterSpacing: "0.08em",
+                  color: "#907e6a",
+                  marginBottom: "9px",
+                  letterSpacing: "0.09em",
+                  textTransform: "uppercase",
                 }}
               >
                 מסלול שני
               </div>
 
               <h2
+                className="t-subtitle"
                 style={{
-                  margin: "0 0 16px 0",
-                  fontSize: "clamp(1.4rem, 2vw, 1.9rem)",
-                  lineHeight: 1.25,
-                  fontWeight: 500,
-                  color: "#181512",
+                  margin: "0 0 12px 0",
+                  fontWeight: 650,
+                  color: "#141009",
+                  letterSpacing: "-0.015em",
                 }}
               >
                 הרכבה אישית
               </h2>
 
               <p
+                className="t-body"
                 style={{
-                  margin: "0 auto 22px",
-                  fontSize: "15px",
-                  lineHeight: 1.8,
+                  margin: "0 auto 20px",
                   color: "#5d5349",
-                  maxWidth: "28ch",
+                  maxWidth: "26ch",
                 }}
               >
                 גלריות נושא עם מודלים סמליים לבחירה — מהם ניתן להרכיב לוח אישי שמספר את הסיפור שלך דרך סימנים, זיכרונות וערכים.
               </p>
 
               <Link
-                href="/custom"
+                href="/custom-composition"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  minHeight: "48px",
+                  minHeight: "44px",
                   padding: "0 22px",
-                  background: "transparent",
-                  color: "#312923",
+                  background: "#1f1a17",
+                  color: "#f8f4ec",
                   textDecoration: "none",
                   borderRadius: "999px",
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: 500,
-                  border: "1px solid rgba(77, 63, 45, 0.18)",
                 }}
               >
                 להתחיל לבחור סמלים
@@ -333,64 +349,63 @@ export default async function HomePage() {
 
             <article
               style={{
-                background: "rgba(255,255,255,0.52)",
-                border: "1px solid rgba(96, 77, 54, 0.08)",
-                borderRadius: "30px",
-                padding: "34px 28px",
-                boxShadow: "0 18px 46px rgba(60,42,22,0.04)",
+                background: "rgba(255,255,255,0.58)",
+                border: "1px solid rgba(96, 77, 54, 0.09)",
+                borderRadius: "28px",
+                padding: "28px 24px 26px",
+                boxShadow: "0 12px 36px rgba(60,42,22,0.05)",
                 textAlign: "center",
               }}
             >
               <div
+                className="t-small"
                 style={{
-                  fontSize: "12px",
-                  color: "#a08f7b",
-                  marginBottom: "12px",
-                  letterSpacing: "0.08em",
+                  color: "#907e6a",
+                  marginBottom: "9px",
+                  letterSpacing: "0.09em",
+                  textTransform: "uppercase",
                 }}
               >
                 מסלול שלישי
               </div>
 
               <h2
+                className="t-subtitle"
                 style={{
-                  margin: "0 0 16px 0",
-                  fontSize: "clamp(1.4rem, 2vw, 1.9rem)",
-                  lineHeight: 1.25,
-                  fontWeight: 500,
-                  color: "#181512",
+                  margin: "0 0 12px 0",
+                  fontWeight: 650,
+                  color: "#141009",
+                  letterSpacing: "-0.015em",
                 }}
               >
                 מודלים בודדים
               </h2>
 
               <p
+                className="t-body"
                 style={{
-                  margin: "0 auto 22px",
-                  fontSize: "15px",
-                  lineHeight: 1.8,
+                  margin: "0 auto 20px",
                   color: "#5d5349",
-                  maxWidth: "28ch",
+                  maxWidth: "26ch",
                 }}
               >
                 אפשרות לבחור ולרכוש סמלים כיחידות נפרדות — להשלמה, לאיסוף, או לשילוב אישי בפרויקטים ובהרכבות עתידיות.
               </p>
 
               <Link
-                href="/models"
+                href="/single-models"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  minHeight: "48px",
+                  minHeight: "44px",
                   padding: "0 22px",
-                  background: "transparent",
-                  color: "#312923",
+                  background: "#1f1a17",
+                  color: "#f8f4ec",
                   textDecoration: "none",
                   borderRadius: "999px",
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: 500,
-                  border: "1px solid rgba(77, 63, 45, 0.18)",
                 }}
               >
                 לעמוד המודלים
@@ -403,76 +418,69 @@ export default async function HomePage() {
         <section
           style={{
             paddingTop: "0",
-            paddingBottom: "92px",
+            paddingBottom: "72px",
           }}
         >
           <div
             style={{
-              background: "rgba(255,255,255,0.46)",
-              border: "1px solid rgba(96, 77, 54, 0.08)",
-              borderRadius: "32px",
-              padding: "42px 30px",
+              background: "rgba(255,255,255,0.50)",
+              border: "1px solid rgba(96, 77, 54, 0.09)",
+              borderRadius: "28px",
+              padding: "40px 36px",
             }}
           >
             <div
-              className="artneto-about-grid"
               style={{
-                display: "grid",
-                gridTemplateColumns: "0.9fr 1.1fr",
-                gap: "30px",
-                alignItems: "start",
+                maxWidth: "700px",
+                margin: "0 auto",
+                textAlign: "center",
               }}
             >
-              <div>
-                <div
-                  style={{
-                    fontSize: "12px",
-                    color: "#a08f7b",
-                    marginBottom: "12px",
-                    letterSpacing: "0.08em",
-                  }}
-                >
-                  על המותג
-                </div>
-
-                <h2
-                  style={{
-                    margin: 0,
-                    fontSize: "clamp(1.8rem, 3vw, 3rem)",
-                    lineHeight: 1.22,
-                    fontWeight: 600,
-                    color: "#181512",
-                  }}
-                >
-                  אמנות קיר
-                  <br />
-                  סימבולית ומודולרית
-                </h2>
+              <div
+                className="t-small"
+                style={{
+                  color: "#907e6a",
+                  marginBottom: "12px",
+                  letterSpacing: "0.09em",
+                  textTransform: "uppercase",
+                }}
+              >
+                על המותג
               </div>
 
-              <div>
-                <p
-                  style={{
-                    margin: "0 0 18px 0",
-                    fontSize: "15px",
-                    lineHeight: 1.8,
-                    color: "#5d5349",
-                  }}
-                >
-                  הטכניקה משלבת הדפסת תלת־ממד, בס־רליף, ומרקמים מעורבים ליצירת יצירות אמנות שהן גם פיסוליות וגם אינטימיות, שמספרות את הסיפור שלך.
-                </p>
+              <h2
+                className="t-title"
+                style={{
+                  margin: "0 0 36px 0",
+                  fontWeight: 650,
+                  color: "#141009",
+                  letterSpacing: "-0.022em",
+                }}
+              >
+                אמנות קיר
+                <br />
+                סימבולית ומודולרית
+              </h2>
 
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "15px",
-                    lineHeight: 1.8,
-                    color: "#5d5349",
-                  }}
-                >
-                  ArtNeto נולד מתוך אמונה פשוטה: הקיר שלנו יכול לספר מי אנחנו. לא כתמונה שקנינו בחנות, אלא כנרטיב ויזואלי שנבנה מסמלים שבחרנו בעצמנו.
-                </p>
-              </div>
+              <p
+                className="t-body"
+                style={{
+                  margin: "8px 0 20px 0",
+                  color: "#5d5349",
+                }}
+              >
+                הטכניקה משלבת הדפסת תלת־ממד, בס־רליף, ומרקמים מעורבים ליצירת יצירות אמנות שהן גם פיסוליות וגם אינטימיות, שמספרות את הסיפור שלך.
+              </p>
+
+              <p
+                className="t-body"
+                style={{
+                  margin: 0,
+                  color: "#5d5349",
+                }}
+              >
+                ArtNeto נולד מתוך אמונה פשוטה: הקיר שלנו יכול לספר מי אנחנו. לא כתמונה שקנינו בחנות, אלא כנרטיב ויזואלי שנבנה מסמלים שבחרנו בעצמנו.
+              </p>
             </div>
           </div>
         </section>
@@ -481,34 +489,35 @@ export default async function HomePage() {
         <section
           style={{
             paddingTop: "0",
-            paddingBottom: "92px",
+            paddingBottom: "72px",
           }}
         >
           <div
             style={{
-              maxWidth: "820px",
-              margin: "0 auto 34px",
+              maxWidth: "680px",
+              margin: "0 auto 26px",
               textAlign: "center",
             }}
           >
             <div
+              className="t-small"
               style={{
-                fontSize: "12px",
-                color: "#a08f7b",
-                marginBottom: "12px",
-                letterSpacing: "0.08em",
+                color: "#907e6a",
+                marginBottom: "14px",
+                letterSpacing: "0.07em",
+                textTransform: "uppercase",
               }}
             >
               הערכים שלנו
             </div>
 
             <h2
+              className="t-title"
               style={{
-                margin: "0 0 10px 0",
-                fontSize: "clamp(1.8rem, 3vw, 3rem)",
-                lineHeight: 1.22,
-                fontWeight: 600,
-                color: "#181512",
+                margin: 0,
+                fontWeight: 650,
+                color: "#141009",
+                letterSpacing: "-0.022em",
               }}
             >
               ארבעה עמודי תווך
@@ -520,7 +529,7 @@ export default async function HomePage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-              gap: "20px",
+              gap: "16px",
             }}
           >
             {[
@@ -544,33 +553,32 @@ export default async function HomePage() {
               <article
                 key={item.title}
                 style={{
-                  background: "rgba(255,255,255,0.50)",
-                  border: "1px solid rgba(96, 77, 54, 0.08)",
-                  borderRadius: "28px",
-                  padding: "26px 22px",
-                  boxShadow: "0 16px 40px rgba(60,42,22,0.04)",
+                  background: "rgba(255,255,255,0.54)",
+                  border: "1px solid rgba(96, 77, 54, 0.09)",
+                  borderRadius: "22px",
+                  padding: "30px 26px 28px",
+                  boxShadow: "0 10px 32px rgba(60,42,22,0.05)",
                   textAlign: "center",
                 }}
               >
                 <h3
+                  className="t-subtitle"
                   style={{
-                    margin: "0 0 12px 0",
-                    fontSize: "20px",
-                    lineHeight: 1.35,
-                    fontWeight: 500,
-                    color: "#1b1713",
+                    margin: "0 0 10px 0",
+                    fontWeight: 650,
+                    color: "#141009",
+                    letterSpacing: "-0.01em",
                   }}
                 >
                   {item.title}
                 </h3>
 
                 <p
+                  className="t-body"
                   style={{
                     margin: "0 auto",
-                    fontSize: "15px",
-                    lineHeight: 1.8,
                     color: "#5d5349",
-                    maxWidth: "28ch",
+                    maxWidth: "26ch",
                   }}
                 >
                   {item.text}
@@ -584,34 +592,35 @@ export default async function HomePage() {
         <section
           style={{
             paddingTop: "0",
-            paddingBottom: "96px",
+            paddingBottom: "72px",
           }}
         >
           <div
             style={{
-              maxWidth: "820px",
-              margin: "0 auto 34px",
+              maxWidth: "680px",
+              margin: "0 auto 26px",
               textAlign: "center",
             }}
           >
             <div
+              className="t-small"
               style={{
-                fontSize: "12px",
-                color: "#a08f7b",
-                marginBottom: "12px",
-                letterSpacing: "0.08em",
+                color: "#907e6a",
+                marginBottom: "14px",
+                letterSpacing: "0.07em",
+                textTransform: "uppercase",
               }}
             >
               הטכניקה
             </div>
 
             <h2
+              className="t-title"
               style={{
-                margin: "0 0 10px 0",
-                fontSize: "clamp(1.8rem, 3vw, 3rem)",
-                lineHeight: 1.22,
-                fontWeight: 600,
-                color: "#181512",
+                margin: 0,
+                fontWeight: 650,
+                color: "#141009",
+                letterSpacing: "-0.022em",
               }}
             >
               מהדיגיטל לאמנות יד
@@ -623,7 +632,7 @@ export default async function HomePage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-              gap: "20px",
+              gap: "16px",
             }}
           >
             {[
@@ -647,33 +656,32 @@ export default async function HomePage() {
               <article
                 key={item.title}
                 style={{
-                  background: "rgba(255,255,255,0.50)",
-                  border: "1px solid rgba(96, 77, 54, 0.08)",
-                  borderRadius: "28px",
-                  padding: "26px 22px",
-                  boxShadow: "0 16px 40px rgba(60,42,22,0.04)",
+                  background: "rgba(255,255,255,0.54)",
+                  border: "1px solid rgba(96, 77, 54, 0.09)",
+                  borderRadius: "22px",
+                  padding: "30px 26px 28px",
+                  boxShadow: "0 10px 32px rgba(60,42,22,0.05)",
                   textAlign: "center",
                 }}
               >
                 <h3
+                  className="t-subtitle"
                   style={{
-                    margin: "0 0 12px 0",
-                    fontSize: "20px",
-                    lineHeight: 1.35,
-                    fontWeight: 500,
-                    color: "#1b1713",
+                    margin: "0 0 10px 0",
+                    fontWeight: 650,
+                    color: "#141009",
+                    letterSpacing: "-0.01em",
                   }}
                 >
                   {item.title}
                 </h3>
 
                 <p
+                  className="t-body"
                   style={{
                     margin: "0 auto",
-                    fontSize: "15px",
-                    lineHeight: 1.8,
                     color: "#5d5349",
-                    maxWidth: "28ch",
+                    maxWidth: "26ch",
                   }}
                 >
                   {item.text}
@@ -687,54 +695,54 @@ export default async function HomePage() {
         <section
           style={{
             paddingTop: 0,
-            paddingBottom: "96px",
+            paddingBottom: "80px",
           }}
         >
           <div
             style={{
-              borderRadius: "36px",
-              padding: "52px 28px",
+              borderRadius: "32px",
+              padding: "48px 36px",
               background: "#1f1a17",
               color: "#f8f4ec",
               textAlign: "center",
-              boxShadow: "0 24px 60px rgba(31,26,23,0.14)",
+              boxShadow: "0 20px 56px rgba(31,26,23,0.16)",
             }}
           >
             <div
               style={{
-                maxWidth: "760px",
+                maxWidth: "640px",
                 margin: "0 auto",
               }}
             >
               <div
+                className="t-small"
                 style={{
-                  fontSize: "12px",
-                  color: "rgba(248,244,236,0.72)",
+                  color: "rgba(248,244,236,0.55)",
                   marginBottom: "12px",
-                  letterSpacing: "0.08em",
+                  letterSpacing: "0.09em",
+                  textTransform: "uppercase",
                 }}
               >
                 יצירה מותאמת אישית
               </div>
 
               <h2
+                className="t-title"
                 style={{
                   margin: "0 0 16px 0",
-                  fontSize: "clamp(1.9rem, 3vw, 3rem)",
-                  lineHeight: 1.18,
-                  fontWeight: 600,
+                  fontWeight: 650,
+                  letterSpacing: "-0.022em",
                 }}
               >
                 {cta.title || "רוצה לבנות עבודה ייחודית לחלל שלך?"}
               </h2>
 
               <p
+                className="t-body"
                 style={{
                   margin: "0 auto 28px",
-                  fontSize: "15px",
-                  lineHeight: 1.85,
-                  color: "rgba(248,244,236,0.84)",
-                  maxWidth: "60ch",
+                  color: "rgba(248,244,236,0.78)",
+                  maxWidth: "52ch",
                 }}
               >
                 {cta.description || "ניתן ליצור קומפוזיציה מותאמת אישית."}
@@ -746,14 +754,15 @@ export default async function HomePage() {
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  minHeight: "52px",
-                  padding: "0 26px",
+                  minHeight: "50px",
+                  padding: "0 28px",
                   background: "#f3eadc",
                   color: "#1f1a17",
                   textDecoration: "none",
                   borderRadius: "999px",
                   fontSize: "15px",
                   fontWeight: 600,
+                  letterSpacing: "-0.01em",
                 }}
               >
                 {cta.label || "לדבר על יצירה"}
@@ -765,6 +774,32 @@ export default async function HomePage() {
 
       <style>
         {`
+          .home-hero-logo {
+            width: 120px;
+            margin: 0 auto 16px;
+            display: block;
+          }
+
+          .artneto-hero-cta-btn:hover {
+            opacity: 0.75;
+          }
+
+          .home-hero-image {
+            max-width: 420px;
+            margin: 24px auto;
+            display: block;
+          }
+
+          .home-about-content {
+            max-width: 520px;
+            margin-right: auto;
+            text-align: right;
+          }
+
+          .home-about-content h2 {
+            margin-bottom: 12px;
+          }
+
           @media (max-width: 1024px) {
             .artneto-three-paths,
             .artneto-values-grid,
@@ -786,6 +821,7 @@ export default async function HomePage() {
 
             .artneto-hero-actions {
               flex-direction: column;
+              align-items: stretch !important;
             }
 
             main {
