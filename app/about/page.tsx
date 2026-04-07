@@ -27,8 +27,8 @@ export default function AboutPage() {
         </div>
 
         <p
+          className="about-h1"
           style={{
-            fontSize: "32px",
             fontWeight: 600,
             letterSpacing: "-0.01em",
             lineHeight: 1.2,

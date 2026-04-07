@@ -22,7 +22,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   }
 
   return (
-    <main
+    <div
       dir="rtl"
       style={{
         minHeight: "100vh",
@@ -186,6 +186,6 @@ export default async function TopicPage({ params }: TopicPageProps) {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }

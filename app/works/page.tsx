@@ -75,7 +75,7 @@ const works: WorkItem[] = [
 
 export default function WorksPage() {
   return (
-    <main
+    <div
       dir="rtl"
       style={{
         background: "#f5f1ea",
@@ -249,6 +249,6 @@ export default function WorksPage() {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }

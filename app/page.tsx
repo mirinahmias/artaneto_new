@@ -9,7 +9,7 @@ export default async function HomePage() {
   const pageCta = page?.cta ?? {};
 
   return (
-    <main
+    <div
       dir="rtl"
       style={{
         background: "#f5f1e8",
@@ -26,10 +26,7 @@ export default async function HomePage() {
       >
         {/* HERO */}
         <section
-          style={{
-            paddingTop: "64px",
-            paddingBottom: "32px",
-          }}
+          className="home-hero-section"
         >
           <div
             style={{
@@ -38,15 +35,15 @@ export default async function HomePage() {
               textAlign: "center",
             }}
           >
-            <img src="/logo/artneto.logo.png" alt={hero.logoAlt} style={{ width: "286px", display: "block", margin: "0 auto" }} />
+            <img src="/logo/artneto.logo.png" alt={hero.logoAlt} className="home-hero-logo-img" />
 
             <h1
+              className="hero-h1"
               style={{
-                fontSize: "36px",
                 fontWeight: 600,
                 lineHeight: 1.2,
                 letterSpacing: "-0.01em",
-                marginBottom: "16px",
+                marginTop: 0,
                 textAlign: "center",
                 color: "#141009",
               }}
@@ -59,9 +56,8 @@ export default async function HomePage() {
             </h1>
 
             <p
-              className="t-body"
+              className="t-body hero-tagline"
               style={{
-                margin: "0 auto 30px",
                 color: "#5a5046",
                 maxWidth: "64ch",
               }}
@@ -212,6 +208,7 @@ export default async function HomePage() {
 
         {/* THREE PATHS */}
         <section
+          className="artneto-paths-section"
           style={{
             paddingTop: "0",
             paddingBottom: "72px",
@@ -633,7 +630,7 @@ export default async function HomePage() {
 
           .home-hero-image {
             max-width: 420px;
-            margin: 24px auto;
+            margin: 8px auto 16px;
             display: block;
           }
 
@@ -675,8 +672,52 @@ export default async function HomePage() {
               overflow-x: hidden;
             }
           }
+
+          .home-hero-logo-img {
+            width: 286px;
+            display: block;
+            margin: 0 auto;
+          }
+
+          .hero-h1 {
+            margin-bottom: 16px;
+          }
+
+          .home-hero-section {
+            padding-top: 64px;
+          }
+
+          @media (max-width: 640px) {
+            .home-hero-logo-img {
+              width: 236px;
+              margin-bottom: 4px;
+            }
+
+            .hero-h1 {
+              margin-bottom: 10px;
+            }
+
+            .home-hero-section {
+              padding-top: 8px;
+              padding-bottom: 8px;
+            }
+
+            .home-hero-image {
+              margin: 8px auto 20px;
+            }
+
+            .artneto-paths-section {
+              padding-top: 16px;
+              padding-bottom: 52px;
+            }
+
+            .artneto-paths-section .artneto-three-paths {
+              padding-left: 4px;
+              padding-right: 4px;
+            }
+          }
         `}
       </style>
-    </main>
+    </div>
   );
 }

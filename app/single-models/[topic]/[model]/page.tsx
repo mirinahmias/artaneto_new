@@ -32,7 +32,7 @@ export default async function ModelPage({ params }: ModelPageProps) {
   }
 
   return (
-    <main
+    <div
       dir="rtl"
       style={{
         minHeight: "100vh",
@@ -188,6 +188,6 @@ export default async function ModelPage({ params }: ModelPageProps) {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -19,7 +19,7 @@ const demoImages: string[] = [
 
 export default function SingleModelsPage() {
   return (
-    <main
+    <div
       dir="rtl"
       style={{
         backgroundColor: "#f5f1ea",
@@ -202,6 +202,6 @@ export default function SingleModelsPage() {
           לכל המודלים
         </Link>
       </section>
-    </main>
+    </div>
   );
 }

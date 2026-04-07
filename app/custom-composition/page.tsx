@@ -409,7 +409,7 @@ export default function CustomCompositionPage() {
   }
 
   return (
-    <main
+    <div
       dir="rtl"
       className="cc-main"
       style={{
@@ -759,38 +759,50 @@ export default function CustomCompositionPage() {
               justifyContent: "flex-start",
             }}
           >
+            {/* Padding wrapper keeps board from touching screen edges on mobile */}
             <div
-              className="cc-board"
+              className="cc-board-wrapper"
               style={{
-                width: "min(100%, 500px)",
-                aspectRatio: "1 / 1",
-                backgroundColor: BOARD_COLOR,
-                padding: TILE_GAP,
+                width: "100%",
+                paddingLeft: "16px",
+                paddingRight: "16px",
                 boxSizing: "border-box",
-                borderRadius: "0",
-                boxShadow: "0 16px 60px rgba(8,4,2,0.50), 0 4px 16px rgba(0,0,0,0.26)",
               }}
             >
               <div
+                className="cc-board"
                 style={{
                   width: "100%",
-                  height: "100%",
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)",
-                  gridTemplateRows: "repeat(3, 1fr)",
-                  gap: TILE_GAP,
+                  maxWidth: "100vw",
+                  aspectRatio: "1 / 1",
+                  backgroundColor: BOARD_COLOR,
+                  padding: TILE_GAP,
+                  boxSizing: "border-box",
+                  borderRadius: "0",
+                  boxShadow: "0 16px 60px rgba(8,4,2,0.50), 0 4px 16px rgba(0,0,0,0.26)",
                 }}
               >
-                {grid.map((cellModelId, i) => (
-                  <BoardTile
-                    key={i}
-                    model={cellModelId ? allModelsById[cellModelId] : null}
-                    isPlacingMode={isPlacingMode}
-                    onClick={() => handleCellClick(i)}
-                    onRemove={() => handleCellRemove(i)}
-                    onHoverLabelChange={setHoveredBoardLabel}
-                  />
-                ))}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gridTemplateRows: "repeat(3, 1fr)",
+                    gap: TILE_GAP,
+                  }}
+                >
+                  {grid.map((cellModelId, i) => (
+                    <BoardTile
+                      key={i}
+                      model={cellModelId ? allModelsById[cellModelId] : null}
+                      isPlacingMode={isPlacingMode}
+                      onClick={() => handleCellClick(i)}
+                      onRemove={() => handleCellRemove(i)}
+                      onHoverLabelChange={setHoveredBoardLabel}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -1323,8 +1335,12 @@ export default function CustomCompositionPage() {
           .cc-board-area {
             justify-content: center !important;
           }
+          .cc-board-wrapper {
+            max-width: 532px; /* 500px board + 16px padding each side */
+          }
           .cc-board {
-            width: min(100%, 500px) !important;
+            width: 100% !important;
+            max-width: 500px !important;
           }
         }
 
@@ -1354,8 +1370,16 @@ export default function CustomCompositionPage() {
             max-height: 420px;
             overflow-y: auto;
           }
+          .cc-board-wrapper {
+            width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
+            box-sizing: border-box;
+          }
           .cc-board {
-            width: min(100%, 480px) !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            aspect-ratio: 1 / 1;
           }
         }
 
@@ -1438,6 +1462,6 @@ export default function CustomCompositionPage() {
           border-color: #c9b89a;
         }
       `}</style>
-    </main>
+    </div>
   );
 }
