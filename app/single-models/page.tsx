@@ -103,7 +103,7 @@ export default function SingleModelsPage() {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            gap: "20px",
+            gap: "24px",
           }}
         >
           {singleModelsData.map((category, index) => (
@@ -117,36 +117,32 @@ export default function SingleModelsPage() {
                   backgroundColor: "#fcfbf8",
                   border: "1px solid #d8c7b3",
                   borderRadius: "28px",
-                  padding: "12px 12px 20px",
+                  padding: "10px 10px 20px",
                   textAlign: "center",
                   cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
                 }}
               >
                 <div
                   style={{
-                    padding: "8px",
-                    backgroundColor: "#F4F1EA",
-                    borderRadius: "12px",
-                    border: "1px solid rgba(0,0,0,0.08)",
+                    background: "transparent",
+                    border: "none",
+                    boxShadow: "none",
+                    padding: 0,
                     marginBottom: "26px",
+                    position: "relative",
+                    aspectRatio: "1 / 1",
+                    borderRadius: "8px",
+                    overflow: "hidden",
                   }}
                 >
-                  <div
-                    style={{
-                      position: "relative",
-                      aspectRatio: "1 / 1",
-                      borderRadius: "8px",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Image
-                      src={demoImages[index]}
-                      alt={`${category.title} — דוגמה`}
-                      fill
-                      style={{ display: "block", width: "100%", borderRadius: "8px", objectFit: "contain" }}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
+                  <Image
+                    src={demoImages[index]}
+                    alt={`${category.title} — דוגמה`}
+                    fill
+                    style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
 
                 <h2
@@ -163,8 +159,8 @@ export default function SingleModelsPage() {
                   className="t-small"
                   style={{
                     margin: 0,
-                    fontWeight: 600,
-                    color: "#8b7355",
+                    fontWeight: 400,
+                    color: "#8a7a5c",
                     letterSpacing: "0.02em",
                   }}
                 >

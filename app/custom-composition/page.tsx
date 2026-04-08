@@ -49,6 +49,7 @@ function ModelCard({
       onClick={onClick}
       title={model.label}
       aria-label={model.label}
+      className="cc-model-card"
       style={{
         all: "unset",
         cursor: "pointer",
@@ -67,13 +68,18 @@ function ModelCard({
         background: "#1e1610",
       }}
     >
-      <Image
-        src={model.image}
-        alt={model.label}
-        fill
-        style={{ objectFit: "cover" }}
-        sizes="72px"
-      />
+      <div
+        className="cc-tile-frame"
+        style={{ position: "absolute", inset: 0 }}
+      >
+        <Image
+          src={model.image}
+          alt={model.label}
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="72px"
+        />
+      </div>
       {isSelected && (
         <span
           aria-hidden
@@ -105,40 +111,54 @@ function CategorySection({
   onToggle: () => void;
 }) {
   return (
-    <div style={{ borderBottom: "1px solid rgba(200,174,130,0.12)" }}>
+    <div className="cc-category-section" style={{ borderBottom: "1px solid #e5dfd3" }}>
       <button
         onClick={onToggle}
         style={{
           all: "unset",
           cursor: "pointer",
           display: "flex",
+          flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
           width: "100%",
-          padding: "8px 0",
+          padding: "6px 4px",
           fontSize: "14px",
           fontWeight: 700,
-          color: "#b89a6a",
+          color: isOpen ? "#7a6a4f" : "#b89a6a",
           letterSpacing: "0.1em",
           textTransform: "uppercase",
+          borderRadius: "4px",
+          transition: "background 0.15s ease, color 0.15s ease",
         }}
+        onMouseEnter={(e) =>
+          ((e.currentTarget as HTMLButtonElement).style.background =
+            "rgba(184,155,94,0.06)")
+        }
+        onMouseLeave={(e) =>
+          ((e.currentTarget as HTMLButtonElement).style.background =
+            "transparent")
+        }
       >
-        <span>{title}</span>
         <span
           style={{
-            fontSize: "10px",
-            opacity: 0.55,
-            transform: isOpen ? "rotate(0deg)" : "rotate(-90deg)",
+            fontSize: "12px",
+            color: "#b89b5e",
+            transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
             transition: "transform 0.2s ease",
             display: "inline-block",
+            marginInlineEnd: "6px",
+            flexShrink: 0,
           }}
         >
           ▾
         </span>
+        <span style={{ flex: 1 }}>{title}</span>
       </button>
 
       {isOpen && (
         <div
+          className="cc-symbol-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
@@ -285,7 +305,7 @@ export default function CustomCompositionPage() {
   const [selectedModelId, setSelectedModelId] = useState<string | null>(null);
   const [grid, setGrid] = useState<(string | null)[]>(Array(9).fill(null));
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>(
-    Object.fromEntries(singleModelsData.map((c, i) => [c.slug, i < 2]))
+    Object.fromEntries(singleModelsData.map((c) => [c.slug, false]))
   );
 
   // ── Submission form state ──
@@ -334,7 +354,12 @@ export default function CustomCompositionPage() {
   }
 
   function toggleCategory(slug: string) {
-    setOpenCategories((prev) => ({ ...prev, [slug]: !prev[slug] }));
+    setOpenCategories((prev) => {
+      const isCurrentlyOpen = prev[slug];
+      return Object.fromEntries(
+        Object.keys(prev).map((key) => [key, !isCurrentlyOpen && key === slug])
+      );
+    });
   }
 
   function handleOpenSubmitForm() {
@@ -399,6 +424,13 @@ export default function CustomCompositionPage() {
       if (!res.ok || json.error) {
         setFormServerError(json.error ?? "שגיאה בשליחה, נסי שנית");
       } else {
+        const previewImages = grid.map((id) =>
+          id ? (allModelsById[id]?.image ?? null) : null
+        );
+        sessionStorage.setItem(
+          "artaneto-board-preview",
+          JSON.stringify(previewImages)
+        );
         router.push("/thank-you");
       }
     } catch {
@@ -417,6 +449,81 @@ export default function CustomCompositionPage() {
         color: "#2f261f",
       }}
     >
+      <style>{`
+        @media (max-width: 640px) {
+          .cc-library {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            overflow-x: hidden !important;
+            transform: none !important;
+          }
+          .cc-library-scroll {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            overflow-x: hidden !important;
+            transform: none !important;
+          }
+          .cc-category-section {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            overflow-x: hidden !important;
+            transform: none !important;
+          }
+          .cc-symbol-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            transform: none !important;
+          }
+          .cc-model-card {
+            width: 100% !important;
+            aspect-ratio: 1 / 1 !important;
+            box-sizing: border-box !important;
+            background: transparent !important;
+            transform: none !important;
+          }
+          .cc-tile-frame {
+            position: absolute !important;
+            inset: 6px !important;
+            width: auto !important;
+            height: auto !important;
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+          }
+          .cc-tile-frame img {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          .cc-board {
+            aspect-ratio: 1 / 1 !important;
+            position: relative !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-direction: column !important;
+            box-shadow: none !important;
+          }
+          .cc-board > div {
+            flex: 1 1 auto !important;
+            min-height: 0 !important;
+            width: 100% !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+          }
+          .cc-board-wrapper {
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+          }
+        }
+      `}</style>
       <div
         className="cc-layout"
         style={{
@@ -454,8 +561,8 @@ export default function CustomCompositionPage() {
               color: "#7a5c35",
               letterSpacing: "0.09em",
               textTransform: "uppercase",
-              marginBottom: "8px",
-              paddingBottom: "8px",
+              marginBottom: "4px",
+              paddingBottom: "6px",
               borderBottom: "1px solid #e5d8c8",
             }}
           >
@@ -651,10 +758,11 @@ export default function CustomCompositionPage() {
             ) : (
               <div
                 style={{
-                  fontSize: "14px",
-                  color: "rgba(107,90,73,0.45)",
+                  fontSize: "13px",
+                  color: "#9a8f7a",
                   textAlign: "center",
                   letterSpacing: "0.03em",
+                  marginTop: "12px",
                 }}
               >
                 בחרי סמלים להפעלת השליחה
@@ -1092,28 +1200,40 @@ export default function CustomCompositionPage() {
                             position: "relative",
                             overflow: "hidden",
                             backgroundColor: "#1e1408",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
                           }}
                         >
                           {m ? (
-                            <Image
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
                               src={m.image}
                               alt={m.label}
-                              fill
-                              style={{ objectFit: "cover" }}
-                              sizes="28px"
+                              style={{
+                                position: "absolute",
+                                inset: 0,
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                              }}
                             />
                           ) : (
                             <div
                               style={{
-                                width: "5px",
-                                height: "5px",
-                                borderRadius: "50%",
-                                backgroundColor: "rgba(201,169,110,0.18)",
+                                position: "absolute",
+                                inset: 0,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
                               }}
-                            />
+                            >
+                              <div
+                                style={{
+                                  width: "5px",
+                                  height: "5px",
+                                  borderRadius: "50%",
+                                  backgroundColor: "rgba(201,169,110,0.18)",
+                                }}
+                              />
+                            </div>
                           )}
                         </div>
                       );

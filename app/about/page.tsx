@@ -8,17 +8,22 @@ export default function AboutPage() {
         overflowX: "hidden",
       }}
     >
-
-      {/* ── 1. HERO ── */}
-      <section style={{ textAlign: "center", maxWidth: 820, margin: "0 auto", paddingTop: 40, paddingBottom: "16px" }}>
-
-        {/* logo as hero mark */}
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}>
+      {/* ── HERO ── */}
+      <section
+        className="about-hero"
+        style={{
+          textAlign: "center",
+          maxWidth: "720px",
+          margin: "0 auto",
+          padding: "72px 24px 80px",
+        }}
+      >
+        <div className="about-hero-logo" style={{ display: "flex", justifyContent: "center", marginBottom: "36px" }}>
           <img
             src="/logo/artneto.logo.png"
             alt="ArtNeto"
             style={{
-              height: "160px",
+              height: "140px",
               width: "auto",
               opacity: 0.88,
               filter: "sepia(10%) contrast(0.95)",
@@ -31,9 +36,9 @@ export default function AboutPage() {
           style={{
             fontWeight: 600,
             letterSpacing: "-0.01em",
-            lineHeight: 1.2,
-            marginBottom: "12px",
-            textAlign: "center",
+            lineHeight: 1.25,
+            margin: "0 auto 20px",
+            maxWidth: "540px",
           }}
         >
           כל קיר הוא סיפור. כל סמל הוא רגע.
@@ -41,294 +46,243 @@ export default function AboutPage() {
 
         <p
           style={{
-            fontSize: "16px",
-            lineHeight: 1.6,
+            fontSize: "17px",
+            lineHeight: 1.65,
             color: "#6b5e4a",
-            maxWidth: "560px",
+            maxWidth: "480px",
             margin: "0 auto",
-            textAlign: "center",
           }}
         >
-          ArtNeto נולדה מתוך אהבה פשוטה — הרצון לעצור רגעים ולהפוך אותם למשהו שנשאר.
+          אנחנו לא מוכרים עיצוב.
+          <br />
+          אנחנו עוזרים לך לבנות שפה אישית על הקיר.
         </p>
-
       </section>
 
-      {/* ── 2. VALUES SECTION ── */}
+      {/* ── STORY ── */}
       <section
+        className="about-story"
         style={{
-          background: "#f4f1ea",
-          padding: "16px 64px 80px",
-          marginTop: "0",
+          maxWidth: "620px",
+          margin: "0 auto",
+          padding: "0 24px 88px",
+          textAlign: "center",
+          borderTop: "1px solid rgba(47, 39, 33, 0.08)",
+          paddingTop: "72px",
         }}
       >
-        <div
+        <p
+          className="about-story-text"
           style={{
-            maxWidth: "800px",
-            margin: "0 auto",
+            fontSize: "18px",
+            lineHeight: 1.85,
+            color: "#3d3328",
+            margin: 0,
           }}
         >
-
-          {/* section intro line */}
-          <p
-            className="t-body"
-            style={{
-              margin: "0 0 36px 0",
-              color: "#5a554f",
-              textAlign: "center",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            מה שמנחה כל עבודה שאנחנו יוצרים
-          </p>
-
-          {/* values list */}
-          <div style={{ display: "flex", flexDirection: "column" }}>
-
-            {/* סמלים */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "120px 1fr",
-                gap: "0 16px",
-                alignItems: "start",
-                padding: "28px 0",
-                borderTop: "1px solid rgba(47, 39, 33, 0.12)",
-              }}
-            >
-              <p
-                className="t-subtitle"
-                style={{
-                  margin: 0,
-                  fontWeight: 500,
-                  letterSpacing: "-0.02em",
-                  color: "#2f2721",
-                }}
-              >
-                סמלים
-              </p>
-              <p
-                className="t-body"
-                style={{
-                  margin: 0,
-                  color: "#5a554f",
-                  paddingTop: "3px",
-                }}
-              >
-                כל סמל שאנחנו בוחרים לשים על הקיר שלנו מספר משהו על מי שאנחנו.
-                ArtNeto מאמינה שהאמנות הטובה ביותר היא זו שמדברת בשפה אישית ועמוקה.
-              </p>
-            </div>
-
-            {/* זיכרון */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "120px 1fr",
-                gap: "0 16px",
-                alignItems: "start",
-                padding: "28px 0",
-                borderTop: "1px solid rgba(47, 39, 33, 0.12)",
-              }}
-            >
-              <p
-                className="t-subtitle"
-                style={{
-                  margin: 0,
-                  fontWeight: 500,
-                  letterSpacing: "-0.02em",
-                  color: "#2f2721",
-                }}
-              >
-                זיכרון
-              </p>
-              <p
-                className="t-body"
-                style={{
-                  margin: 0,
-                  color: "#5a554f",
-                  paddingTop: "3px",
-                }}
-              >
-                כל קומפוזיציה יכולה לייצג אדם אהוב, תקופה, או ערכים שמנחים אותנו —
-                ולהזכיר לנו מדי יום מה חשוב.
-              </p>
-            </div>
-
-            {/* מרקמים */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "120px 1fr",
-                gap: "0 16px",
-                alignItems: "start",
-                padding: "28px 0",
-                borderTop: "1px solid rgba(47, 39, 33, 0.12)",
-              }}
-            >
-              <p
-                className="t-subtitle"
-                style={{
-                  margin: 0,
-                  fontWeight: 500,
-                  letterSpacing: "-0.02em",
-                  color: "#2f2721",
-                }}
-              >
-                מרקמים
-              </p>
-              <p
-                className="t-body"
-                style={{
-                  margin: 0,
-                  color: "#5a554f",
-                  paddingTop: "3px",
-                }}
-              >
-                העבודות משלבות עומק, צבעים וחומרים שמרגישים אמיתיים —
-                לא רק דיגיטליים.
-              </p>
-            </div>
-
-            {/* טכנולוגיה */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "120px 1fr",
-                gap: "0 16px",
-                alignItems: "start",
-                padding: "28px 0",
-                borderTop: "1px solid rgba(47, 39, 33, 0.12)",
-                borderBottom: "1px solid rgba(47, 39, 33, 0.12)",
-              }}
-            >
-              <p
-                className="t-subtitle"
-                style={{
-                  margin: 0,
-                  fontWeight: 500,
-                  letterSpacing: "-0.02em",
-                  color: "#2f2721",
-                }}
-              >
-                טכנולוגיה
-              </p>
-              <p
-                className="t-body"
-                style={{
-                  margin: 0,
-                  color: "#5a554f",
-                  paddingTop: "3px",
-                }}
-              >
-                הדפסת תלת־ממד מאפשרת ליצור פרטים מדויקים ועומק שלא ניתן להגיע אליו
-                בשיטות מסורתיות.
-              </p>
-            </div>
-
-          </div>
-        </div>
+          ArtNeto נולדה מתוך אהבה פשוטה —
+          <br />
+          הרצון לעצור רגעים ולהפוך אותם למשהו שנשאר.
+          <br />
+          <br />
+          לא תמונה שקונים ותולים,
+          <br />
+          אלא קומפוזיציה אישית
+          <br />
+          שנבנית מסמלים שנבחרו מתוך משמעות.
+        </p>
       </section>
 
-      {/* ── 3. CLOSING COMPOSITION ── */}
+      {/* ── CENTRAL STATEMENT ── */}
       <section
+        className="about-central"
         style={{
-          maxWidth: "600px",
-          margin: "0 auto",
-          padding: "28px 48px 88px",
+          maxWidth: "720px",
+          margin: "80px auto",
+          padding: "0 24px",
           textAlign: "center",
         }}
       >
-
-        {/* slogan */}
-        <div style={{ marginBottom: 28, borderTop: "1px solid rgba(47, 39, 33, 0.07)", paddingTop: 28, maxWidth: "320px", margin: "0 auto 28px" }}>
-          <p
-            className="t-title"
-            style={{
-              margin: "0 0 1px 0",
-              fontWeight: 300,
-              letterSpacing: "-0.025em",
-              color: "#181512",
-            }}
-          >
-            כל אריח הוא סמל.
-          </p>
-          <p
-            className="t-title"
-            style={{
-              margin: 0,
-              fontWeight: 300,
-              letterSpacing: "-0.025em",
-              color: "#181512",
-            }}
-          >
-            כל סמל הוא רעיון.
-          </p>
-        </div>
-
-        {/* supporting process text */}
-        <div
+        <p
+          className="about-statement"
           style={{
-            borderTop: "1px solid rgba(47, 39, 33, 0.1)",
-            paddingTop: 22,
-            marginBottom: 22,
+            fontWeight: 350,
+            letterSpacing: "-0.02em",
+            color: "#181512",
+            lineHeight: 1.2,
+            margin: 0,
           }}
         >
-          <p
-            className="t-body"
-            style={{
-              margin: "0 0 12px 0",
-              color: "#5d5049",
-            }}
-          >
-            העבודות נוצרות בתהליך שמשלב בין דיוק טכנולוגי
-            לבין עבודה ידנית איטית.
-          </p>
-          <p
-            className="t-body"
-            style={{
-              margin: 0,
-              color: "#5d5049",
-            }}
-          >
-            המודלים מודפסים בתלת־ממד,
-            ומקבלים שכבות של צבע, מרקם ופיניש ידני.
-          </p>
-        </div>
-
-        {/* final closing lines */}
-        <div
-          style={{
-            borderTop: "1px solid rgba(47, 39, 33, 0.1)",
-            paddingTop: 20,
-          }}
-        >
-          <p
-            className="t-body"
-            style={{
-              margin: "0 0 8px 0",
-              fontWeight: 400,
-              color: "#211b14",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            סמלים אינם קישוט. הם שפה.
-          </p>
-          <p
-            className="t-small"
-            style={{
-              margin: 0,
-              color: "#9a8878",
-            }}
-          >
-            והשפה הזו ממשיכה להיכתב
-            <br />
-            על הקיר, בתוך הבית, ובתוך הזיכרון.
-          </p>
-        </div>
-
+          סמלים אינם קישוט.
+          <br />
+          הם שפה.
+        </p>
       </section>
 
+      {/* ── THREE CARDS ── */}
+      <section
+        className="about-cards-section"
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          padding: "0 24px 88px",
+        }}
+      >
+        <div className="about-cards-grid">
+          {[
+            {
+              title: "סמלים",
+              text: "כל סמל שאנחנו בוחרים לשים על הקיר שלנו מספר משהו על מי שאנחנו. אמנות טובה מדברת בשפה אישית ועמוקה.",
+            },
+            {
+              title: "זיכרון",
+              text: "כל קומפוזיציה יכולה לייצג אדם אהוב, תקופה, או ערכים שמנחים אותנו — ולהזכיר לנו מדי יום מה חשוב.",
+            },
+            {
+              title: "חומר",
+              text: "העבודות משלבות עומק, מרקם וצבע שמרגישים אמיתיים — נוכחות פיזית שלא ניתן לשכפל.",
+            },
+          ].map((card) => (
+            <article
+              key={card.title}
+              style={{
+                background: "rgba(255,255,255,0.58)",
+                border: "1px solid rgba(96, 77, 54, 0.09)",
+                borderRadius: "28px",
+                padding: "42px 32px 38px",
+                boxShadow: "0 10px 32px rgba(60,42,22,0.06)",
+                textAlign: "center",
+              }}
+            >
+              <h2
+                className="t-subtitle"
+                style={{
+                  margin: "0 0 14px 0",
+                  fontWeight: 650,
+                  color: "#141009",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                {card.title}
+              </h2>
+              <p
+                className="t-body"
+                style={{
+                  margin: "0 auto",
+                  color: "#5d5349",
+                  maxWidth: "28ch",
+                  lineHeight: 1.7,
+                }}
+              >
+                {card.text}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ── CLOSING ── */}
+      <section
+        className="about-closing"
+        style={{
+          maxWidth: "560px",
+          margin: "0 auto",
+          padding: "0 24px 100px",
+          textAlign: "center",
+          borderTop: "1px solid rgba(47, 39, 33, 0.08)",
+          paddingTop: "72px",
+        }}
+      >
+        <p
+          className="about-closing-text"
+          style={{
+            fontSize: "18px",
+            lineHeight: 1.85,
+            color: "#3d3328",
+            margin: 0,
+          }}
+        >
+          העבודות נוצרות בתהליך שמשלב בין דיוק לבין רגש.
+          <br />
+          <br />
+          אבל בסוף —
+          <br />
+          המשמעות האמיתית לא נוצרת אצלנו.
+          <br />
+          <br />
+          היא נוצרת אצלך.
+        </p>
+      </section>
+
+      <style>{`
+        .about-statement {
+          font-size: 48px;
+        }
+
+        .about-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 24px;
+        }
+
+        @media (max-width: 720px) {
+          .about-cards-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          /* Statement */
+          .about-statement {
+            font-size: 34px;
+          }
+
+          /* Hero */
+          .about-hero {
+            padding-top: 36px !important;
+            padding-bottom: 40px !important;
+          }
+          .about-hero-logo {
+            margin-bottom: 20px !important;
+          }
+          .about-h1 {
+            margin-bottom: 12px !important;
+          }
+
+          /* Story */
+          .about-story {
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
+          }
+          .about-story-text {
+            line-height: 1.65 !important;
+          }
+
+          /* Central statement */
+          .about-central {
+            margin-top: 48px !important;
+            margin-bottom: 48px !important;
+          }
+
+          /* Cards */
+          .about-cards-section {
+            padding-bottom: 44px !important;
+          }
+          .about-cards-grid {
+            gap: 16px !important;
+          }
+
+          /* Closing */
+          .about-closing {
+            padding-top: 40px !important;
+            padding-bottom: 32px !important;
+          }
+          .about-closing-text {
+            line-height: 1.65 !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

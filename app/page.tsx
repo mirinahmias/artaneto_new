@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getHomePage } from "./lib/fetchers/getHomePage";
 import { content } from "./content/content";
 
-const { hero, paths, about, values, technique, cta } = content.home;
+const { hero, paths, values, technique, cta } = content.home;
 
 export default async function HomePage() {
   const page = await getHomePage();
@@ -113,93 +113,6 @@ export default async function HomePage() {
               {hero.description}
             </p>
 
-            <div
-              className="artneto-hero-actions"
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "12px",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-              }}
-            >
-              {/* Primary — בניית לוח אישי */}
-              <Link
-                href="/custom-composition"
-                className="artneto-hero-cta-btn"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "52px",
-                  padding: "0 32px",
-                  background: "#1f1a17",
-                  color: "#f8f4ec",
-                  textDecoration: "none",
-                  borderRadius: "999px",
-                  fontSize: "15px",
-                  fontWeight: 600,
-                  letterSpacing: "-0.01em",
-                  boxShadow: "0 8px 28px rgba(31,26,23,0.22)",
-                  transition: "opacity 0.18s ease",
-                }}
-              >
-                {hero.ctaCustom}
-              </Link>
-
-              {/* Secondary — צפייה בלוחות מוכנים */}
-              <Link
-                href="/works"
-                className="artneto-hero-cta-btn"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "52px",
-                  padding: "0 28px",
-                  background: "transparent",
-                  color: "#1f1a17",
-                  textDecoration: "none",
-                  borderRadius: "999px",
-                  fontSize: "15px",
-                  fontWeight: 500,
-                  letterSpacing: "-0.01em",
-                  border: "1.5px solid rgba(31,26,23,0.32)",
-                  transition: "opacity 0.18s ease",
-                }}
-              >
-                {hero.ctaWorks}
-              </Link>
-
-              {/* Tertiary — בחירת סמלים בודדים */}
-              <Link
-                href="/single-models"
-                className="artneto-hero-cta-btn"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "52px",
-                  padding: "0 24px",
-                  background: "rgba(31,26,23,0.06)",
-                  color: "#4a4038",
-                  textDecoration: "none",
-                  borderRadius: "999px",
-                  fontSize: "14px",
-                  fontWeight: 500,
-                  letterSpacing: "-0.01em",
-                  transition: "opacity 0.18s ease",
-                }}
-              >
-                {hero.ctaSingle}
-              </Link>
-            </div>
-
-            <p style={{ fontSize: "14px", color: "#8a7a5c", marginTop: "12px", opacity: 0.9, textAlign: "center" }}>
-              {hero.priceNote}
-            </p>
-
             <p style={{ fontSize: "14px", color: "#7a6a52", marginTop: "20px", textAlign: "center", lineHeight: 1.6 }}>
               {hero.personalNote}
             </p>
@@ -210,7 +123,7 @@ export default async function HomePage() {
         <section
           className="artneto-paths-section"
           style={{
-            paddingTop: "0",
+            paddingTop: "40px",
             paddingBottom: "72px",
           }}
         >
@@ -219,7 +132,7 @@ export default async function HomePage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-              gap: "18px",
+              gap: "24px",
             }}
           >
             {paths.map((path) => (
@@ -228,9 +141,9 @@ export default async function HomePage() {
                 style={{
                   background: "rgba(255,255,255,0.58)",
                   border: "1px solid rgba(96, 77, 54, 0.09)",
-                  borderRadius: "28px",
-                  padding: "28px 24px 26px",
-                  boxShadow: "0 12px 36px rgba(60,42,22,0.05)",
+                  borderRadius: "32px",
+                  padding: "38px 28px 34px",
+                  boxShadow: "0 18px 52px rgba(60,42,22,0.10)",
                   textAlign: "center",
                 }}
               >
@@ -249,8 +162,9 @@ export default async function HomePage() {
                 <h2
                   className="t-subtitle"
                   style={{
-                    margin: "0 0 12px 0",
-                    fontWeight: 650,
+                    margin: "0 0 8px 0",
+                    fontWeight: 700,
+                    fontSize: "19px",
                     color: "#141009",
                     letterSpacing: "-0.015em",
                   }}
@@ -261,7 +175,7 @@ export default async function HomePage() {
                 <p
                   className="t-body"
                   style={{
-                    margin: "0 auto 20px",
+                    margin: "0 auto 24px",
                     color: "#5d5349",
                     maxWidth: "26ch",
                   }}
@@ -271,18 +185,19 @@ export default async function HomePage() {
 
                 <Link
                   href={path.href}
+                  className="artneto-path-cta-btn"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    minHeight: "44px",
-                    padding: "0 22px",
+                    minHeight: "48px",
+                    padding: "0 26px",
                     background: "#1f1a17",
                     color: "#f8f4ec",
                     textDecoration: "none",
                     borderRadius: "999px",
-                    fontSize: "14px",
-                    fontWeight: 500,
+                    fontSize: "15px",
+                    fontWeight: 600,
                   }}
                 >
                   {path.cta}
@@ -292,85 +207,16 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* ABOUT */}
-        <section
-          style={{
-            paddingTop: "0",
-            paddingBottom: "72px",
-          }}
-        >
-          <div
-            style={{
-              background: "rgba(255,255,255,0.50)",
-              border: "1px solid rgba(96, 77, 54, 0.09)",
-              borderRadius: "28px",
-              padding: "40px 36px",
-            }}
-          >
-            <div
-              style={{
-                maxWidth: "700px",
-                margin: "0 auto",
-                textAlign: "center",
-              }}
-            >
-              <div
-                className="t-small"
-                style={{
-                  color: "#907e6a",
-                  marginBottom: "12px",
-                  letterSpacing: "0.09em",
-                  textTransform: "uppercase",
-                }}
-              >
-                {about.label}
-              </div>
-
-              <h2
-                className="t-title"
-                style={{
-                  margin: "0 0 36px 0",
-                  fontWeight: 650,
-                  color: "#141009",
-                  letterSpacing: "-0.022em",
-                }}
-              >
-                {about.title}
-                <br />
-                {about.titleAccent}
-              </h2>
-
-              <p
-                className="t-body"
-                style={{
-                  margin: "8px 0 20px 0",
-                  color: "#5d5349",
-                }}
-              >
-                {about.paragraph1}
-              </p>
-
-              <p
-                className="t-body"
-                style={{
-                  margin: 0,
-                  color: "#5d5349",
-                }}
-              >
-                {about.paragraph2}
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* VALUES */}
         <section
+          className="home-values-section"
           style={{
             paddingTop: "0",
             paddingBottom: "72px",
           }}
         >
           <div
+            className="home-values-header"
             style={{
               maxWidth: "680px",
               margin: "0 auto 26px",
@@ -378,7 +224,7 @@ export default async function HomePage() {
             }}
           >
             <div
-              className="t-small"
+              className="t-small home-values-eyebrow"
               style={{
                 color: "#907e6a",
                 marginBottom: "14px",
@@ -451,12 +297,14 @@ export default async function HomePage() {
 
         {/* TECHNIQUE */}
         <section
+          className="home-technique-section"
           style={{
             paddingTop: "0",
             paddingBottom: "72px",
           }}
         >
           <div
+            className="home-technique-header"
             style={{
               maxWidth: "680px",
               margin: "0 auto 26px",
@@ -464,7 +312,7 @@ export default async function HomePage() {
             }}
           >
             <div
-              className="t-small"
+              className="t-small home-technique-eyebrow"
               style={{
                 color: "#907e6a",
                 marginBottom: "14px",
@@ -537,6 +385,7 @@ export default async function HomePage() {
 
         {/* CTA */}
         <section
+          className="home-cta-section"
           style={{
             paddingTop: 0,
             paddingBottom: "80px",
@@ -559,7 +408,7 @@ export default async function HomePage() {
               }}
             >
               <div
-                className="t-small"
+                className="t-small home-cta-eyebrow"
                 style={{
                   color: "rgba(248,244,236,0.55)",
                   marginBottom: "12px",
@@ -624,24 +473,43 @@ export default async function HomePage() {
             display: block;
           }
 
-          .artneto-hero-cta-btn:hover {
-            opacity: 0.75;
-          }
-
           .home-hero-image {
             max-width: 420px;
             margin: 8px auto 16px;
             display: block;
           }
 
-          .home-about-content {
-            max-width: 520px;
-            margin-right: auto;
-            text-align: right;
+          .artneto-path-cta-btn:hover {
+            opacity: 0.78;
           }
 
-          .home-about-content h2 {
-            margin-bottom: 12px;
+          /* Route cards — desktop strengthened */
+          @media (min-width: 641px) {
+            .artneto-paths-section .artneto-three-paths {
+              max-width: 1100px;
+              margin-left: auto;
+              margin-right: auto;
+              gap: 28px !important;
+            }
+
+            .artneto-paths-section article {
+              padding: 46px 34px 42px !important;
+            }
+
+            .artneto-paths-section article h2 {
+              font-size: 22px !important;
+            }
+
+            .artneto-paths-section article p {
+              font-size: 16px !important;
+              line-height: 1.65 !important;
+            }
+
+            .artneto-paths-section .artneto-path-cta-btn {
+              min-height: 52px !important;
+              padding: 0 30px !important;
+              font-size: 16px !important;
+            }
           }
 
           @media (max-width: 1024px) {
@@ -661,11 +529,6 @@ export default async function HomePage() {
             .artneto-values-grid,
             .artneto-steps-grid {
               grid-template-columns: 1fr !important;
-            }
-
-            .artneto-hero-actions {
-              flex-direction: column;
-              align-items: stretch !important;
             }
 
             main {
@@ -707,13 +570,69 @@ export default async function HomePage() {
             }
 
             .artneto-paths-section {
-              padding-top: 16px;
+              padding-top: 32px;
               padding-bottom: 52px;
             }
 
             .artneto-paths-section .artneto-three-paths {
               padding-left: 4px;
               padding-right: 4px;
+              gap: 20px !important;
+            }
+
+            /* Route cards — mobile compact */
+            .artneto-paths-section article {
+              padding: 24px 20px 22px !important;
+            }
+
+            .artneto-paths-section article .t-small {
+              margin-bottom: 6px !important;
+            }
+
+            .artneto-paths-section article h2 {
+              margin-bottom: 6px !important;
+            }
+
+            .artneto-paths-section article p {
+              font-size: 13px !important;
+              line-height: 1.5 !important;
+              margin-bottom: 16px !important;
+            }
+
+            .artneto-paths-section .artneto-path-cta-btn {
+              min-height: 42px !important;
+              font-size: 14px !important;
+            }
+
+            /* Lower sections vertical rhythm */
+            .home-values-section,
+            .home-technique-section {
+              padding-top: 40px !important;
+              padding-bottom: 40px !important;
+            }
+
+            .home-cta-section {
+              padding-top: 40px !important;
+              padding-bottom: 24px !important;
+            }
+
+            /* Eyebrow → heading gap */
+            .home-values-eyebrow,
+            .home-technique-eyebrow,
+            .home-cta-eyebrow {
+              margin-bottom: 8px !important;
+            }
+
+            /* Heading → first card/content gap */
+            .home-values-header,
+            .home-technique-header {
+              margin-bottom: 20px !important;
+            }
+
+            /* Stacked card gap */
+            .artneto-values-grid,
+            .artneto-steps-grid {
+              gap: 20px !important;
             }
           }
         `}

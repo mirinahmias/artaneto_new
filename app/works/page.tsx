@@ -65,12 +65,6 @@ const works: WorkItem[] = [
     description: "תיאור קצר של הלוח — יוחלף בהמשך בתוכן האמיתי.",
     imageSrc: "/works/work-9.jpg",
   },
-  {
-    id: 10,
-    title: "לוח מוכן 10",
-    description: "תיאור קצר של הלוח — יוחלף בהמשך בתוכן האמיתי.",
-    imageSrc: "/works/work-10.jpg",
-  },
 ];
 
 export default function WorksPage() {

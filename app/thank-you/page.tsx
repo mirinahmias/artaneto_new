@@ -1,6 +1,89 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
+const BOARD_COLOR = "#c8a868";
+
+function MiniBoardPreview({ images }: { images: (string | null)[] }) {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gridTemplateRows: "repeat(3, 1fr)",
+        gap: "4px",
+        aspectRatio: "1 / 1",
+        width: "100%",
+        maxWidth: "320px",
+        margin: "0 auto 32px",
+        backgroundColor: BOARD_COLOR,
+        padding: "4px",
+        borderRadius: "10px",
+        boxSizing: "border-box",
+        boxShadow: "0 4px 24px rgba(8,4,2,0.18)",
+      }}
+    >
+      {images.map((src, i) => (
+        <div
+          key={i}
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            backgroundColor: "#1e1408",
+            borderRadius: "3px",
+          }}
+        >
+          {src ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={src}
+              alt=""
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+          ) : (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: "6px",
+                  height: "6px",
+                  borderRadius: "50%",
+                  backgroundColor: "rgba(201,169,110,0.22)",
+                }}
+              />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function ThankYouPage() {
+  const [boardImages, setBoardImages] = useState<(string | null)[] | null>(null);
+
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem("artaneto-board-preview");
+      if (raw) setBoardImages(JSON.parse(raw));
+    } catch {
+      // ignore
+    }
+  }, []);
   return (
     <div
       dir="rtl"
@@ -59,17 +142,21 @@ export default function ThankYouPage() {
           כל לוח הוא יצירה ייחודית — ואני מתייחסת אליו ככזה
         </p>
 
-        {/* D. Board preview placeholder */}
-        <div
-          style={{
-            width: "100%",
-            aspectRatio: "1 / 1",
-            backgroundColor: "#f4f1ea",
-            borderRadius: "12px",
-            marginBottom: "32px",
-            border: "1px solid rgba(0,0,0,0.06)",
-          }}
-        />
+        {/* D. Board preview */}
+        {boardImages ? (
+          <MiniBoardPreview images={boardImages} />
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              aspectRatio: "1 / 1",
+              backgroundColor: "#f4f1ea",
+              borderRadius: "12px",
+              marginBottom: "32px",
+              border: "1px solid rgba(0,0,0,0.06)",
+            }}
+          />
+        )}
 
         {/* E. What happens now */}
         <div style={{ textAlign: "right", marginBottom: "32px" }}>
